@@ -342,6 +342,14 @@ Imports System.ComponentModel
     Private Sub rBtnManualOrc_Click(sender As Object, e As EventArgs) Handles rBtnManualOrc.Click
         Process.Start("Orc Manual.html")
     End Sub
+    Private Sub rBtnManualGnome_Click(sender As Object, e As EventArgs) Handles rBtnManualGnome.Click
+        Process.Start("Gnome Manual.html")
+    End Sub
+    Private Sub rBtnManualWarlock_Click(sender As Object, e As EventArgs) Handles rBtnManualWarlock.Click
+        Process.Start("Warlock Manual.html")
+    End Sub
+
+
     Private Sub rBtnDonations_Click(sender As Object, e As EventArgs) Handles rBtnDonations.Click
         Process.Start(IO.Path.Combine(globals.m_masterworkRootDir, "repository", "donate.html"))
     End Sub
