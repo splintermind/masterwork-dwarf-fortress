@@ -26,6 +26,10 @@ Imports Newtonsoft.Json
 
         globals.m_defaultSerializeOptions.NullValueHandling = NullValueHandling.Ignore
         globals.m_defaultSerializeOptions.Formatting = Formatting.Indented
+
+        'Dim d As New DateTime(1409356958)
+        'Console.WriteLine(d.ToLongDateString)
+
     End Sub
 
     Private Sub setTheme()
@@ -96,6 +100,9 @@ Imports Newtonsoft.Json
         If My.Settings.Properties("WORLDGEN") IsNot Nothing Then
             rCheckWorldGen.Checked = My.Settings.WORLDGEN
         End If
+
+        'NotifyIcon1.Visible = True
+        'NotifyIcon1.ShowBalloonTip(3000, "Update", "New Update Available", ToolTipIcon.Info)
     End Sub
 
     'this override prevents flickering when drawing transparent controls over background images within a tabcontrol
@@ -656,53 +663,50 @@ Imports Newtonsoft.Json
 
 #Region "random creature generation"
 
-    Private Sub randomcreatureButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateCreatures.Click
-        If btnDelRandoms.Enabled Then
-            If MsgBox("It appears some random creatures already exist, are you sure you want to overwrite them?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Confirm Overwrite") = MsgBoxResult.No Then
-                Exit Sub
-            End If
+    '    Private Sub randomcreatureButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '        If btnDelRandoms.Enabled Then
+    '            If MsgBox("It appears some random creatures already exist, are you sure you want to overwrite them?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Confirm Overwrite") = MsgBoxResult.No Then
+    '                Exit Sub
+    '            End If
 
-        End If
+    '        End If
 
-        Try
-            Dim f_info As IO.FileInfo = findDfFile("RandCreatures.exe")
-            runApp(f_info, f_info.Directory.Parent.FullName, True) 'run in objects folder
+    '        Try
+    '            Dim f_info As IO.FileInfo = findDfFile("RandCreatures.exe")
+    '            runApp(f_info, f_info.Directory.Parent.FullName, True) 'run in objects folder
 
-        Catch ex As Exception
-            MsgBox("Failed to run RandCreatures.exe!", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly)
-        End Try
-        'refresh the file list
-        fileWorking.loadDfFilePaths()
-        randomCreaturesExistCheck()
+    '        Catch ex As Exception
+    '            MsgBox("Failed to run RandCreatures.exe!", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly)
+    '        End Try
+    '        'refresh the file list
+    '        fileWorking.loadDfFilePaths()
+    '        randomCreaturesExistCheck()
+    '    End Sub
+
+    '    Private Sub btnDelRandoms_Click(sender As Object, e As EventArgs)
+    '        If MsgBox("Remove all random creatures, civilizations and languages?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Confirm Delete") = MsgBoxResult.No Then
+    '            Exit Sub
+    '        End If
+    '        'clear the random creature, entity and language files
+    '        Dim mgr As New optionManager()
+    '        mgr.saveFile(findDfFilePath("entity_random_rc.txt"), "", False)
+    '        mgr.saveFile(findDfFilePath("language_RANDOM.txt"), "", False)
+    '        mgr.saveFile(findDfFilePath("creature_random_rc.txt"), "", False)
+    '        btnDelRandoms.Enabled = False
+    '    End Sub
+
+    Private Sub randomCreaturesExistCheck()
+        'Try
+        '    Dim data As String = readFile(findDfFilePath("creature_random_rc.txt"), False)
+        '    If data.Contains("[CREATURE:") Then
+        '        btnDelRandoms.Enabled = True        
+        '    Else
+        '        btnDelRandoms.Enabled = False        
+        '    End If
+        'Catch ex As Exception
+        '    btnDelRandoms.Enabled = False        
+        'End Try
     End Sub
-
-    Private Sub btnDelRandoms_Click(sender As Object, e As EventArgs) Handles btnDelRandoms.Click
-        If MsgBox("Remove all random creatures, civilizations and languages?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Confirm Delete") = MsgBoxResult.No Then
-            Exit Sub
-        End If
-        'clear the random creature, entity and language files
-        Dim mgr As New optionManager()
-        mgr.saveFile(findDfFilePath("entity_random_rc.txt"), "", False)
-        mgr.saveFile(findDfFilePath("language_RANDOM.txt"), "", False)
-        mgr.saveFile(findDfFilePath("creature_random_rc.txt"), "", False)
-        btnDelRandoms.Enabled = False
-    End Sub
-
-    Private Function randomCreaturesExistCheck() As Boolean
-        Try
-            Dim data As String = readFile(findDfFilePath("creature_random_rc.txt"), False)
-            If data.Contains("[CREATURE:") Then
-                btnDelRandoms.Enabled = True
-                Return True
-            Else
-                btnDelRandoms.Enabled = False
-                Return False
-            End If
-        Catch ex As Exception
-            btnDelRandoms.Enabled = False
-            Return False
-        End Try
-    End Function
 #End Region
 
 
