@@ -34,7 +34,9 @@ Public Class fileWorking
         m_dfFilePaths.AddRange(getFiles(m_dwarfFortressRootDir & "\raw", False, New String() {".init"}))
 
         'exe extension is for randcreatures
-        m_dfFilePaths.AddRange(getFiles(m_dwarfFortressRootDir & "\raw\objects\bin", False, New String() {".exe"}))
+        If IO.Directory.Exists(m_dwarfFortressRootDir & "\raw\objects\bin") Then
+            m_dfFilePaths.AddRange(getFiles(m_dwarfFortressRootDir & "\raw\objects\bin", False, New String() {".exe"}))
+        End If
 
         'include the top level folder for dfhack.init and df
         m_dfFilePaths.AddRange(getFiles(m_dwarfFortressRootDir, False, New String() {".init", ".exe"}))
@@ -108,7 +110,7 @@ Public Class fileWorking
         Return IO.Directory.GetDirectories(rootDirectory, "*.*", searchOpt).Select(Function(d) New IO.DirectoryInfo(d)).ToList
     End Function
 
-    Private Shared Function getFiles(ByVal rootDirectory As String, ByVal recursive As Boolean, ParamArray exts() As String) As List(Of IO.FileInfo)        
+    Public Shared Function getFiles(ByVal rootDirectory As String, ByVal recursive As Boolean, ParamArray exts() As String) As List(Of IO.FileInfo)
         Dim searchOpt As IO.SearchOption = If(recursive, IO.SearchOption.AllDirectories, IO.SearchOption.TopDirectoryOnly)
         Return IO.Directory.GetFiles(rootDirectory, "*.*", searchOpt).Where(Function(o) exts.Contains(IO.Path.GetExtension(o))).Select(Function(p) New IO.FileInfo(p)).ToList
     End Function

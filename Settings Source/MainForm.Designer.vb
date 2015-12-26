@@ -171,6 +171,7 @@ Partial Class MainForm
         Dim ComboItem24 As MasterworkDwarfFortress.comboItem = New MasterworkDwarfFortress.comboItem()
         Dim ComboItem25 As MasterworkDwarfFortress.comboItem = New MasterworkDwarfFortress.comboItem()
         Dim ComboItem26 As MasterworkDwarfFortress.comboItem = New MasterworkDwarfFortress.comboItem()
+        Dim ComboItem27 As MasterworkDwarfFortress.comboItem = New MasterworkDwarfFortress.comboItem()
         Dim OptionManager28 As MasterworkDwarfFortress.optionManager = New MasterworkDwarfFortress.optionManager()
         Dim OptionSettingManager30 As MasterworkDwarfFortress.optionSettingManager = New MasterworkDwarfFortress.optionSettingManager()
         Dim OptionSingle20 As MasterworkDwarfFortress.optionSingle = New MasterworkDwarfFortress.optionSingle()
@@ -370,9 +371,9 @@ Partial Class MainForm
         Dim OptionSettingManager79 As MasterworkDwarfFortress.optionSettingManager = New MasterworkDwarfFortress.optionSettingManager()
         Dim OptionList6 As MasterworkDwarfFortress.optionList = New MasterworkDwarfFortress.optionList()
         Dim FileListManager76 As MasterworkDwarfFortress.fileListManager = New MasterworkDwarfFortress.fileListManager()
-        Dim ComboItem27 As MasterworkDwarfFortress.comboItem = New MasterworkDwarfFortress.comboItem()
         Dim ComboItem28 As MasterworkDwarfFortress.comboItem = New MasterworkDwarfFortress.comboItem()
         Dim ComboItem29 As MasterworkDwarfFortress.comboItem = New MasterworkDwarfFortress.comboItem()
+        Dim ComboItem30 As MasterworkDwarfFortress.comboItem = New MasterworkDwarfFortress.comboItem()
         Dim OptionManager76 As MasterworkDwarfFortress.optionManager = New MasterworkDwarfFortress.optionManager()
         Dim OptionSettingManager80 As MasterworkDwarfFortress.optionSettingManager = New MasterworkDwarfFortress.optionSettingManager()
         Dim OptionSingleFileReplace5 As MasterworkDwarfFortress.optionSingleFileReplace = New MasterworkDwarfFortress.optionSingleFileReplace()
@@ -423,7 +424,6 @@ Partial Class MainForm
         Me.optBtnTruetype = New MasterworkDwarfFortress.optionSingleBoolButton()
         Me.optBtnRendermax = New MasterworkDwarfFortress.optionSingleReplaceButton()
         Me.optNumPatternTwbtLevels = New MasterworkDwarfFortress.optionNumericPattern()
-        Me.mwCbItemGraphics = New MasterworkDwarfFortress.mwCheckBox()
         Me.optCbTwbtFonts = New MasterworkDwarfFortress.optionComboBoxFileReplace()
         Me.optBtnSound = New MasterworkDwarfFortress.optionSingleBoolButton()
         Me.optBtnFps = New MasterworkDwarfFortress.optionSingleBoolButton()
@@ -492,6 +492,16 @@ Partial Class MainForm
         Me.optBtnHFS = New MasterworkDwarfFortress.optionSingleReplaceButton()
         Me.optMaskGoodAreas = New MasterworkDwarfFortress.optionFormatted()
         Me.optMaskEvilAreas = New MasterworkDwarfFortress.optionFormatted()
+        Me.lblFdActive = New System.Windows.Forms.Label()
+        Me.lblFdFaction = New System.Windows.Forms.Label()
+        Me.lblFdAdv = New System.Windows.Forms.Label()
+        Me.lblFdFort = New System.Windows.Forms.Label()
+        Me.lblFdGuards = New System.Windows.Forms.Label()
+        Me.lblFdAI = New System.Windows.Forms.Label()
+        Me.lblFdSkills = New System.Windows.Forms.Label()
+        Me.lblFdMats = New System.Windows.Forms.Label()
+        Me.lblFdSkulk = New System.Windows.Forms.Label()
+        Me.lblFdSeasons = New System.Windows.Forms.Label()
         Me.lblHFSLevels = New System.Windows.Forms.Label()
         Me.lblSettingExplanation = New System.Windows.Forms.Label()
         Me.lblWorldGenSelect = New System.Windows.Forms.Label()
@@ -557,7 +567,6 @@ Partial Class MainForm
         Me.rBtnModOverhaulElderScrolls = New System.Windows.Forms.RibbonButton()
         Me.rBtnModOverhaulUnderhive = New System.Windows.Forms.RibbonButton()
         Me.rBtnModOverhaulWarhammer = New System.Windows.Forms.RibbonButton()
-        Me.rBtnDatabase = New System.Windows.Forms.RibbonButton()
         Me.RibbonSeparator3 = New System.Windows.Forms.RibbonSeparator()
         Me.rBtnThemes = New System.Windows.Forms.RibbonButton()
         Me.rBtnThemeDefault = New System.Windows.Forms.RibbonButton()
@@ -599,7 +608,6 @@ Partial Class MainForm
         Me.tabSettings = New KRBTabControl.TabPageEx()
         Me.tilesetViewer = New MasterworkDwarfFortress.tilesetPreviewer()
         Me.tilesetFontViewer = New MasterworkDwarfFortress.tilesetPreviewer()
-        Me.lblSettingsMessage = New System.Windows.Forms.Label()
         Me.grpWorldSettings = New MasterworkDwarfFortress.mwGroupBox()
         Me.lblPopCap = New System.Windows.Forms.Label()
         Me.tileSetColorPreviewer = New MasterworkDwarfFortress.colorPreviewer()
@@ -626,7 +634,7 @@ Partial Class MainForm
         Me.lblGraphicsPack = New System.Windows.Forms.Label()
         Me.cmbTileSets = New MasterworkDwarfFortress.hoverComboBox()
         Me.lblPrintMode = New System.Windows.Forms.Label()
-        Me.grpTextWillBeText = New MasterworkDwarfFortress.mwGroupBox()
+        Me.grpTWBT = New MasterworkDwarfFortress.mwGroupBox()
         Me.lblTwbtFont = New System.Windows.Forms.Label()
         Me.lblTwbtZLevels = New System.Windows.Forms.Label()
         Me.grpFpsAndSound = New MasterworkDwarfFortress.mwGroupBox()
@@ -642,20 +650,48 @@ Partial Class MainForm
         Me.lblCivCaravans = New System.Windows.Forms.Label()
         Me.lblCivTaigaOrcs = New MasterworkDwarfFortress.mwCivLabel()
         Me.lblCivNaga = New MasterworkDwarfFortress.mwCivLabel()
-        Me.lblCivAutomaton = New MasterworkDwarfFortress.mwCivLabel()
-        Me.lblCivFrostGiant = New MasterworkDwarfFortress.mwCivLabel()
-        Me.lblCivBanshees = New MasterworkDwarfFortress.mwCivLabel()
-        Me.lblCivWarlock = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblCivVampires = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblCivTitans = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblCivNightCreatures = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblCivNecromancers = New MasterworkDwarfFortress.mwCivLabel()
         Me.lblCivKoboldCamp = New MasterworkDwarfFortress.mwCivLabel()
-        Me.lblCivCentaurs = New MasterworkDwarfFortress.mwCivLabel()
-        Me.lblCivWerewolves = New MasterworkDwarfFortress.mwCivLabel()
-        Me.lblCivDrow = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblCivWerebeasts = New MasterworkDwarfFortress.mwCivLabel()
         Me.lblCivSuccubus = New MasterworkDwarfFortress.mwCivLabel()
         Me.lblCivGoblin = New MasterworkDwarfFortress.mwCivLabel()
         Me.lblCivElf = New MasterworkDwarfFortress.mwCivLabel()
         Me.lblCivGnome = New MasterworkDwarfFortress.mwCivLabel()
         Me.lblCivHuman = New MasterworkDwarfFortress.mwCivLabel()
         Me.lblCivInvasions = New System.Windows.Forms.Label()
+        Me.tabFortDef = New KRBTabControl.TabPageEx()
+        Me.panFortDef = New MasterworkDwarfFortress.mwPanel()
+        Me.tableLayoutFortDef = New MasterworkDwarfFortress.mwTableLayout()
+        Me.lblFdRaptormen = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdPandashi = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdHarpies = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdBadgermen = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdHardTitle = New System.Windows.Forms.Label()
+        Me.lblFdSpiderfiends = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdNightwings = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdMinotaurs = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdJotuns = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdMedTitle = New System.Windows.Forms.Label()
+        Me.lblFdCaravans = New System.Windows.Forms.Label()
+        Me.lblFdInvasions = New System.Windows.Forms.Label()
+        Me.lblFdBeakWolves = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdFerric = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdFoulBlendecs = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdFrogmen = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdHellfire = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdSerpentmen = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdStranglers = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdWarElephants = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdWhiteTigermen = New MasterworkDwarfFortress.mwCivLabel()
+        Me.lblFdWerewolves = New MasterworkDwarfFortress.mwCivLabel()
+        Me.tabMods = New KRBTabControl.TabPageEx()
+        Me.tabDwarves = New KRBTabControl.TabPageEx()
+        Me.tabOrcs = New KRBTabControl.TabPageEx()
+        Me.tabSuccubi = New KRBTabControl.TabPageEx()
+        Me.tabGnomes = New KRBTabControl.TabPageEx()
         Me.tabWorldGen = New KRBTabControl.TabPageEx()
         Me.btnResetWorldGen = New System.Windows.Forms.Button()
         Me.grpWorldGenMisc = New MasterworkDwarfFortress.mwGroupBox()
@@ -735,12 +771,15 @@ Partial Class MainForm
         Me.grpMiscSettings.SuspendLayout()
         Me.grpEmbarkMigrants.SuspendLayout()
         Me.grpGraphics.SuspendLayout()
-        Me.grpTextWillBeText.SuspendLayout()
+        Me.grpTWBT.SuspendLayout()
         Me.grpFpsAndSound.SuspendLayout()
         CType(Me.optNumVolume, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabCivs.SuspendLayout()
         Me.panCivTable.SuspendLayout()
         Me.tableLayoutCivs.SuspendLayout()
+        Me.tabFortDef.SuspendLayout()
+        Me.panFortDef.SuspendLayout()
+        Me.tableLayoutFortDef.SuspendLayout()
         Me.tabWorldGen.SuspendLayout()
         Me.grpWorldGenMisc.SuspendLayout()
         Me.grpWorldGenCaves.SuspendLayout()
@@ -1730,6 +1769,8 @@ Partial Class MainForm
         ComboItem25.value = "FRAME_BUFFER"
         ComboItem26.display = "VBO"
         ComboItem26.value = "VBO"
+        ComboItem27.display = "Text-Will-Be-Text"
+        ComboItem27.value = "TWBT"
         OptionList5.itemList.Add(ComboItem20)
         OptionList5.itemList.Add(ComboItem21)
         OptionList5.itemList.Add(ComboItem22)
@@ -1737,6 +1778,7 @@ Partial Class MainForm
         OptionList5.itemList.Add(ComboItem24)
         OptionList5.itemList.Add(ComboItem25)
         OptionList5.itemList.Add(ComboItem26)
+        OptionList5.itemList.Add(ComboItem27)
         OptionManager28.checkAllOnLoad = False
         OptionManager28.loadFromDInit = False
         OptionManager28.loadFromInit = True
@@ -1901,25 +1943,6 @@ Partial Class MainForm
         Me.optNumPatternTwbtLevels.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ToolTipMaker.SetToolTip(Me.optNumPatternTwbtLevels, "Determines the maximum number of z-levels that can be visible at one time.")
         Me.optNumPatternTwbtLevels.Value = New Decimal(New Integer() {10, 0, 0, 0})
-        '
-        'mwCbItemGraphics
-        '
-        Me.mwCbItemGraphics.Appearance = System.Windows.Forms.Appearance.Button
-        Me.mwCbItemGraphics.FlatAppearance.BorderSize = 0
-        Me.mwCbItemGraphics.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.mwCbItemGraphics.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.mwCbItemGraphics.Image = CType(resources.GetObject("mwCbItemGraphics.Image"), System.Drawing.Image)
-        Me.mwCbItemGraphics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.mwCbItemGraphics.isEnabled = True
-        Me.mwCbItemGraphics.Location = New System.Drawing.Point(50, 69)
-        Me.mwCbItemGraphics.Margin = New System.Windows.Forms.Padding(1)
-        Me.mwCbItemGraphics.Name = "mwCbItemGraphics"
-        Me.mwCbItemGraphics.Size = New System.Drawing.Size(134, 27)
-        Me.mwCbItemGraphics.TabIndex = 12
-        Me.mwCbItemGraphics.Text = "Item Graphics"
-        Me.mwCbItemGraphics.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTipMaker.SetToolTip(Me.mwCbItemGraphics, "Allows unique item, food, trap, etc. graphics.")
-        Me.mwCbItemGraphics.UseVisualStyleBackColor = True
         '
         'optCbTwbtFonts
         '
@@ -3437,6 +3460,168 @@ Partial Class MainForm
         Me.optMaskEvilAreas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ToolTipMaker.SetToolTip(Me.optMaskEvilAreas, "The amount of evil tiles on the map.")
         '
+        'lblFdActive
+        '
+        Me.lblFdActive.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdActive.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdActive.ForeColor = System.Drawing.Color.White
+        Me.lblFdActive.Location = New System.Drawing.Point(107, 1)
+        Me.lblFdActive.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdActive.Name = "lblFdActive"
+        Me.lblFdActive.Size = New System.Drawing.Size(51, 30)
+        Me.lblFdActive.TabIndex = 6
+        Me.lblFdActive.Text = "Active"
+        Me.lblFdActive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdActive, "When enabled, adds the civilization to the world.")
+        '
+        'lblFdFaction
+        '
+        Me.lblFdFaction.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdFaction.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdFaction.ForeColor = System.Drawing.Color.White
+        Me.lblFdFaction.Location = New System.Drawing.Point(278, 1)
+        Me.lblFdFaction.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdFaction.Name = "lblFdFaction"
+        Me.lblFdFaction.Size = New System.Drawing.Size(76, 30)
+        Me.lblFdFaction.TabIndex = 6
+        Me.lblFdFaction.Text = "Faction"
+        Me.lblFdFaction.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdFaction, "Determines which civilizations will ally together.")
+        '
+        'lblFdAdv
+        '
+        Me.lblFdAdv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdAdv.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdAdv.ForeColor = System.Drawing.Color.White
+        Me.lblFdAdv.Location = New System.Drawing.Point(221, 1)
+        Me.lblFdAdv.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdAdv.Name = "lblFdAdv"
+        Me.lblFdAdv.Size = New System.Drawing.Size(51, 30)
+        Me.lblFdAdv.TabIndex = 6
+        Me.lblFdAdv.Text = "Adv"
+        Me.lblFdAdv.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdAdv, "When enabled this civilization can be played in adventure mode.")
+        '
+        'lblFdFort
+        '
+        Me.lblFdFort.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdFort.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdFort.ForeColor = System.Drawing.Color.White
+        Me.lblFdFort.Location = New System.Drawing.Point(164, 1)
+        Me.lblFdFort.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdFort.Name = "lblFdFort"
+        Me.lblFdFort.Size = New System.Drawing.Size(51, 30)
+        Me.lblFdFort.TabIndex = 16
+        Me.lblFdFort.Text = "Fort"
+        Me.lblFdFort.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdFort, "When enabled this civilization can be played in fortress mode.")
+        '
+        'lblFdGuards
+        '
+        Me.lblFdGuards.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdGuards.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdGuards.ForeColor = System.Drawing.Color.White
+        Me.lblFdGuards.Location = New System.Drawing.Point(442, 1)
+        Me.lblFdGuards.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdGuards.Name = "lblFdGuards"
+        Me.lblFdGuards.Size = New System.Drawing.Size(59, 30)
+        Me.lblFdGuards.TabIndex = 29
+        Me.lblFdGuards.Text = "Guards"
+        Me.lblFdGuards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdGuards, "When enabled caravans will be accompanied by guards.")
+        '
+        'lblFdAI
+        '
+        Me.lblFdAI.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdAI.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdAI.ForeColor = System.Drawing.Color.White
+        Me.lblFdAI.Location = New System.Drawing.Point(589, 1)
+        Me.lblFdAI.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdAI.Name = "lblFdAI"
+        Me.lblFdAI.Size = New System.Drawing.Size(76, 30)
+        Me.lblFdAI.TabIndex = 30
+        Me.lblFdAI.Text = "AI"
+        Me.lblFdAI.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdAI, "Controls how the civilization will attack.")
+        '
+        'lblFdSkills
+        '
+        Me.lblFdSkills.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdSkills.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdSkills.ForeColor = System.Drawing.Color.White
+        Me.lblFdSkills.Location = New System.Drawing.Point(802, 1)
+        Me.lblFdSkills.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdSkills.Name = "lblFdSkills"
+        Me.lblFdSkills.Size = New System.Drawing.Size(61, 30)
+        Me.lblFdSkills.TabIndex = 6
+        Me.lblFdSkills.Text = "Skills"
+        Me.lblFdSkills.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdSkills, "Determines the natural fighting skill levels of invading creatures. WARNING: Be c" & _
+        "areful when setting this for your playable civilization!")
+        '
+        'lblFdMats
+        '
+        Me.lblFdMats.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdMats.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdMats.ForeColor = System.Drawing.Color.White
+        Me.lblFdMats.Location = New System.Drawing.Point(728, 1)
+        Me.lblFdMats.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdMats.Name = "lblFdMats"
+        Me.lblFdMats.Size = New System.Drawing.Size(68, 30)
+        Me.lblFdMats.TabIndex = 6
+        Me.lblFdMats.Text = "Materials"
+        Me.lblFdMats.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdMats, "Determines the quality of invaders' equipment.")
+        '
+        'lblFdSkulk
+        '
+        Me.lblFdSkulk.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdSkulk.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdSkulk.ForeColor = System.Drawing.Color.White
+        Me.lblFdSkulk.Location = New System.Drawing.Point(671, 1)
+        Me.lblFdSkulk.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdSkulk.Name = "lblFdSkulk"
+        Me.lblFdSkulk.Size = New System.Drawing.Size(51, 30)
+        Me.lblFdSkulk.TabIndex = 31
+        Me.lblFdSkulk.Text = "Skulk"
+        Me.lblFdSkulk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdSkulk, "This makes the severity of attacks depend on the extent of item/baby thievery rat" & _
+        "her than the passage of time.")
+        '
+        'lblFdSeasons
+        '
+        Me.lblFdSeasons.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdSeasons.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdSeasons.ForeColor = System.Drawing.Color.White
+        Me.lblFdSeasons.Location = New System.Drawing.Point(869, 1)
+        Me.lblFdSeasons.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdSeasons.Name = "lblFdSeasons"
+        Me.lblFdSeasons.Size = New System.Drawing.Size(76, 30)
+        Me.lblFdSeasons.TabIndex = 32
+        Me.lblFdSeasons.Text = "Seasons"
+        Me.lblFdSeasons.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTipMaker.SetToolTip(Me.lblFdSeasons, "Determines when civilizations will attack and/or trade.")
+        '
         'lblHFSLevels
         '
         Me.lblHFSLevels.Location = New System.Drawing.Point(7, 308)
@@ -3516,7 +3701,6 @@ Partial Class MainForm
         Me.rPanelGeneral.Items.Add(Me.RibbonSeparator2)
         Me.rPanelGeneral.Items.Add(Me.rBtnLinks)
         Me.rPanelGeneral.Items.Add(Me.rBtnMoreMods)
-        Me.rPanelGeneral.Items.Add(Me.rBtnDatabase)
         Me.rPanelGeneral.Items.Add(Me.RibbonSeparator3)
         Me.rPanelGeneral.Items.Add(Me.rBtnThemes)
         Me.rPanelGeneral.Items.Add(Me.RibbonSeparator4)
@@ -4037,16 +4221,6 @@ Partial Class MainForm
         Me.rBtnModOverhaulWarhammer.Tag = "http://www.bay12forums.com/smf/index.php?topic=93254.0"
         Me.rBtnModOverhaulWarhammer.Text = "Warhammer: Fortress"
         '
-        'rBtnDatabase
-        '
-        Me.rBtnDatabase.Image = Global.MasterworkDwarfFortress.My.Resources.Resources.database_cloud
-        Me.rBtnDatabase.SmallImage = Global.MasterworkDwarfFortress.My.Resources.Resources.database_cloud
-        Me.rBtnDatabase.Tag = "http://dfdb.info/"
-        Me.rBtnDatabase.Text = "DFDB"
-        Me.rBtnDatabase.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center
-        Me.rBtnDatabase.ToolTip = "Online items database."
-        Me.rBtnDatabase.ToolTipTitle = "Database"
-        '
         'rBtnThemes
         '
         Me.rBtnThemes.DropDownItems.Add(Me.rBtnThemeDefault)
@@ -4342,6 +4516,12 @@ Partial Class MainForm
         Me.tabMain.BorderColor = System.Drawing.Color.Black
         Me.tabMain.Controls.Add(Me.tabSettings)
         Me.tabMain.Controls.Add(Me.tabCivs)
+        Me.tabMain.Controls.Add(Me.tabFortDef)
+        Me.tabMain.Controls.Add(Me.tabMods)
+        Me.tabMain.Controls.Add(Me.tabDwarves)
+        Me.tabMain.Controls.Add(Me.tabOrcs)
+        Me.tabMain.Controls.Add(Me.tabSuccubi)
+        Me.tabMain.Controls.Add(Me.tabGnomes)
         Me.tabMain.Controls.Add(Me.tabWorldGen)
         Me.tabMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabMain.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -4351,8 +4531,8 @@ Partial Class MainForm
         Me.tabMain.ItemSize = New System.Drawing.Size(0, 26)
         Me.tabMain.Location = New System.Drawing.Point(0, 70)
         Me.tabMain.Name = "tabMain"
-        Me.tabMain.SelectedIndex = 0
-        Me.tabMain.Size = New System.Drawing.Size(1026, 554)
+        Me.tabMain.SelectedIndex = 2
+        Me.tabMain.Size = New System.Drawing.Size(1026, 613)
         Me.tabMain.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.tabMain.TabGradient.ColorEnd = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.tabMain.TabGradient.ColorStart = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -4370,7 +4550,6 @@ Partial Class MainForm
         Me.tabSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.tabSettings.Controls.Add(Me.tilesetViewer)
         Me.tabSettings.Controls.Add(Me.tilesetFontViewer)
-        Me.tabSettings.Controls.Add(Me.lblSettingsMessage)
         Me.tabSettings.Controls.Add(Me.grpWorldSettings)
         Me.tabSettings.Controls.Add(Me.tileSetColorPreviewer)
         Me.tabSettings.Controls.Add(Me.grpSaveSettings)
@@ -4378,13 +4557,13 @@ Partial Class MainForm
         Me.tabSettings.Controls.Add(Me.grpMiscSettings)
         Me.tabSettings.Controls.Add(Me.grpEmbarkMigrants)
         Me.tabSettings.Controls.Add(Me.grpGraphics)
-        Me.tabSettings.Controls.Add(Me.grpTextWillBeText)
+        Me.tabSettings.Controls.Add(Me.grpTWBT)
         Me.tabSettings.Controls.Add(Me.grpFpsAndSound)
         Me.tabSettings.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabSettings.IsClosable = False
         Me.tabSettings.Location = New System.Drawing.Point(1, 32)
         Me.tabSettings.Name = "tabSettings"
-        Me.tabSettings.Size = New System.Drawing.Size(1024, 517)
+        Me.tabSettings.Size = New System.Drawing.Size(1024, 576)
         Me.tabSettings.TabIndex = 0
         Me.tabSettings.Text = "Settings"
         '
@@ -4403,19 +4582,6 @@ Partial Class MainForm
         Me.tilesetFontViewer.Size = New System.Drawing.Size(256, 32)
         Me.tilesetFontViewer.TabIndex = 175
         Me.tilesetFontViewer.Visible = False
-        '
-        'lblSettingsMessage
-        '
-        Me.lblSettingsMessage.BackColor = System.Drawing.Color.FromArgb(CType(CType(130, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.lblSettingsMessage.ForeColor = System.Drawing.Color.White
-        Me.lblSettingsMessage.Image = Global.MasterworkDwarfFortress.My.Resources.Resources.information_small
-        Me.lblSettingsMessage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblSettingsMessage.Location = New System.Drawing.Point(304, 465)
-        Me.lblSettingsMessage.Name = "lblSettingsMessage"
-        Me.lblSettingsMessage.Size = New System.Drawing.Size(416, 48)
-        Me.lblSettingsMessage.TabIndex = 174
-        Me.lblSettingsMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblSettingsMessage.Visible = False
         '
         'grpWorldSettings
         '
@@ -4491,15 +4657,15 @@ Partial Class MainForm
         Me.optCbAutoSave.Name = "optCbAutoSave"
         FileListManager76.fileNames = CType(resources.GetObject("FileListManager76.fileNames"), System.Collections.Generic.List(Of String))
         OptionList6.fileManager = FileListManager76
-        ComboItem27.display = "Never"
-        ComboItem27.value = "NONE"
-        ComboItem28.display = "Seasonal"
-        ComboItem28.value = "SEASONAL"
-        ComboItem29.display = "Yearly"
-        ComboItem29.value = "YEARLY"
-        OptionList6.itemList.Add(ComboItem27)
+        ComboItem28.display = "Never"
+        ComboItem28.value = "NONE"
+        ComboItem29.display = "Seasonal"
+        ComboItem29.value = "SEASONAL"
+        ComboItem30.display = "Yearly"
+        ComboItem30.value = "YEARLY"
         OptionList6.itemList.Add(ComboItem28)
         OptionList6.itemList.Add(ComboItem29)
+        OptionList6.itemList.Add(ComboItem30)
         OptionManager76.checkAllOnLoad = False
         OptionManager76.loadFromDInit = True
         OptionManager76.loadFromInit = False
@@ -4808,21 +4974,20 @@ Partial Class MainForm
         Me.lblPrintMode.Text = "Print Mode"
         Me.lblPrintMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'grpTextWillBeText
+        'grpTWBT
         '
-        Me.grpTextWillBeText.BackColor = System.Drawing.Color.FromArgb(CType(CType(130, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.grpTextWillBeText.Controls.Add(Me.optNumPatternTwbtLevels)
-        Me.grpTextWillBeText.Controls.Add(Me.lblTwbtFont)
-        Me.grpTextWillBeText.Controls.Add(Me.lblTwbtZLevels)
-        Me.grpTextWillBeText.Controls.Add(Me.mwCbItemGraphics)
-        Me.grpTextWillBeText.Controls.Add(Me.optCbTwbtFonts)
-        Me.grpTextWillBeText.ForeColor = System.Drawing.SystemColors.Window
-        Me.grpTextWillBeText.Location = New System.Drawing.Point(396, 297)
-        Me.grpTextWillBeText.Name = "grpTextWillBeText"
-        Me.grpTextWillBeText.Size = New System.Drawing.Size(234, 104)
-        Me.grpTextWillBeText.TabIndex = 7
-        Me.grpTextWillBeText.TabStop = False
-        Me.grpTextWillBeText.Text = "TWBT Plugin"
+        Me.grpTWBT.BackColor = System.Drawing.Color.FromArgb(CType(CType(130, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.grpTWBT.Controls.Add(Me.optNumPatternTwbtLevels)
+        Me.grpTWBT.Controls.Add(Me.lblTwbtFont)
+        Me.grpTWBT.Controls.Add(Me.lblTwbtZLevels)
+        Me.grpTWBT.Controls.Add(Me.optCbTwbtFonts)
+        Me.grpTWBT.ForeColor = System.Drawing.SystemColors.Window
+        Me.grpTWBT.Location = New System.Drawing.Point(396, 297)
+        Me.grpTWBT.Name = "grpTWBT"
+        Me.grpTWBT.Size = New System.Drawing.Size(234, 70)
+        Me.grpTWBT.TabIndex = 7
+        Me.grpTWBT.TabStop = False
+        Me.grpTWBT.Text = "Text-Will-Be-Text Plugin"
         '
         'lblTwbtFont
         '
@@ -4833,7 +4998,7 @@ Partial Class MainForm
         Me.lblTwbtFont.Name = "lblTwbtFont"
         Me.lblTwbtFont.Size = New System.Drawing.Size(85, 20)
         Me.lblTwbtFont.TabIndex = 13
-        Me.lblTwbtFont.Text = "Font Tileset"
+        Me.lblTwbtFont.Text = "TWBT Font"
         Me.lblTwbtFont.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblTwbtZLevels
@@ -4939,7 +5104,7 @@ Partial Class MainForm
         Me.tabCivs.IsClosable = False
         Me.tabCivs.Location = New System.Drawing.Point(1, 32)
         Me.tabCivs.Name = "tabCivs"
-        Me.tabCivs.Size = New System.Drawing.Size(1024, 517)
+        Me.tabCivs.Size = New System.Drawing.Size(1024, 576)
         Me.tabCivs.TabIndex = 1
         Me.tabCivs.Text = "Civilizations"
         '
@@ -4949,9 +5114,9 @@ Partial Class MainForm
         Me.panCivTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panCivTable.Controls.Add(Me.tableLayoutCivs)
         Me.panCivTable.ForeColor = System.Drawing.Color.White
-        Me.panCivTable.Location = New System.Drawing.Point(32, 42)
+        Me.panCivTable.Location = New System.Drawing.Point(32, 48)
         Me.panCivTable.Name = "panCivTable"
-        Me.panCivTable.Size = New System.Drawing.Size(961, 468)
+        Me.panCivTable.Size = New System.Drawing.Size(961, 420)
         Me.panCivTable.TabIndex = 18
         '
         'tableLayoutCivs
@@ -4980,18 +5145,16 @@ Partial Class MainForm
         Me.tableLayoutCivs.Controls.Add(Me.lblCivDwarf, 0, 3)
         Me.tableLayoutCivs.Controls.Add(Me.lblPlayableFort, 2, 0)
         Me.tableLayoutCivs.Controls.Add(Me.lblCivCaravans, 5, 0)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivTaigaOrcs, 0, 10)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivNaga, 0, 15)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivAutomaton, 0, 18)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivFrostGiant, 0, 20)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivBanshees, 0, 19)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivWarlock, 0, 21)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivKoboldCamp, 0, 14)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivCentaurs, 0, 13)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivWerewolves, 0, 16)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivDrow, 0, 8)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivSuccubus, 0, 11)
-        Me.tableLayoutCivs.Controls.Add(Me.lblCivGoblin, 0, 9)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivTaigaOrcs, 0, 9)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivNaga, 0, 13)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivVampires, 0, 16)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivTitans, 0, 18)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivNightCreatures, 0, 17)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivNecromancers, 0, 19)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivKoboldCamp, 0, 12)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivWerebeasts, 0, 14)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivSuccubus, 0, 10)
+        Me.tableLayoutCivs.Controls.Add(Me.lblCivGoblin, 0, 8)
         Me.tableLayoutCivs.Controls.Add(Me.lblCivElf, 0, 4)
         Me.tableLayoutCivs.Controls.Add(Me.lblCivGnome, 0, 5)
         Me.tableLayoutCivs.Controls.Add(Me.lblCivHuman, 0, 6)
@@ -5007,7 +5170,7 @@ Partial Class MainForm
         Me.tableLayoutCivs.Location = New System.Drawing.Point(0, 0)
         Me.tableLayoutCivs.Margin = New System.Windows.Forms.Padding(1)
         Me.tableLayoutCivs.Name = "tableLayoutCivs"
-        Me.tableLayoutCivs.RowCount = 22
+        Me.tableLayoutCivs.RowCount = 20
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6.0!))
@@ -5019,18 +5182,18 @@ Partial Class MainForm
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6.0!))
+        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
         Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
-        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6.0!))
-        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
-        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
-        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
-        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
-        Me.tableLayoutCivs.Size = New System.Drawing.Size(959, 466)
+        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.tableLayoutCivs.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.tableLayoutCivs.Size = New System.Drawing.Size(959, 418)
         Me.tableLayoutCivs.TabIndex = 16
         '
         'lblCivHermit
@@ -5087,7 +5250,7 @@ Partial Class MainForm
         Me.lblCivTaigaOrcs.factionable = True
         Me.lblCivTaigaOrcs.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCivTaigaOrcs.ForeColor = System.Drawing.Color.White
-        Me.lblCivTaigaOrcs.Location = New System.Drawing.Point(1, 213)
+        Me.lblCivTaigaOrcs.Location = New System.Drawing.Point(1, 189)
         Me.lblCivTaigaOrcs.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
         Me.lblCivTaigaOrcs.Name = "lblCivTaigaOrcs"
         Me.lblCivTaigaOrcs.playableAdvMode = True
@@ -5104,7 +5267,7 @@ Partial Class MainForm
         Me.lblCivNaga.factionable = True
         Me.lblCivNaga.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCivNaga.ForeColor = System.Drawing.Color.White
-        Me.lblCivNaga.Location = New System.Drawing.Point(1, 315)
+        Me.lblCivNaga.Location = New System.Drawing.Point(1, 267)
         Me.lblCivNaga.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
         Me.lblCivNaga.Name = "lblCivNaga"
         Me.lblCivNaga.playableAdvMode = True
@@ -5116,80 +5279,80 @@ Partial Class MainForm
         Me.lblCivNaga.Text = "Naga"
         Me.lblCivNaga.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblCivAutomaton
+        'lblCivVampires
         '
-        Me.lblCivAutomaton.factionable = True
-        Me.lblCivAutomaton.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCivAutomaton.ForeColor = System.Drawing.Color.White
-        Me.lblCivAutomaton.Location = New System.Drawing.Point(1, 369)
-        Me.lblCivAutomaton.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
-        Me.lblCivAutomaton.Name = "lblCivAutomaton"
-        Me.lblCivAutomaton.playableAdvMode = True
-        Me.lblCivAutomaton.playableFortMode = False
-        Me.lblCivAutomaton.simpleCivName = "AUTOMATON"
-        Me.lblCivAutomaton.Size = New System.Drawing.Size(96, 22)
-        Me.lblCivAutomaton.TabIndex = 6
-        Me.lblCivAutomaton.Tag = ""
-        Me.lblCivAutomaton.Text = "Automatons"
-        Me.lblCivAutomaton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblCivVampires.factionable = True
+        Me.lblCivVampires.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCivVampires.ForeColor = System.Drawing.Color.White
+        Me.lblCivVampires.Location = New System.Drawing.Point(1, 321)
+        Me.lblCivVampires.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblCivVampires.Name = "lblCivVampires"
+        Me.lblCivVampires.playableAdvMode = True
+        Me.lblCivVampires.playableFortMode = False
+        Me.lblCivVampires.simpleCivName = "VAMPIRE"
+        Me.lblCivVampires.Size = New System.Drawing.Size(96, 22)
+        Me.lblCivVampires.TabIndex = 6
+        Me.lblCivVampires.Tag = ""
+        Me.lblCivVampires.Text = "Vampires"
+        Me.lblCivVampires.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblCivFrostGiant
+        'lblCivTitans
         '
-        Me.lblCivFrostGiant.factionable = True
-        Me.lblCivFrostGiant.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCivFrostGiant.ForeColor = System.Drawing.Color.White
-        Me.lblCivFrostGiant.Location = New System.Drawing.Point(1, 417)
-        Me.lblCivFrostGiant.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
-        Me.lblCivFrostGiant.Name = "lblCivFrostGiant"
-        Me.lblCivFrostGiant.playableAdvMode = True
-        Me.lblCivFrostGiant.playableFortMode = False
-        Me.lblCivFrostGiant.simpleCivName = "FROST_GIANT"
-        Me.lblCivFrostGiant.Size = New System.Drawing.Size(96, 22)
-        Me.lblCivFrostGiant.TabIndex = 6
-        Me.lblCivFrostGiant.Tag = ""
-        Me.lblCivFrostGiant.Text = "Frost Giants"
-        Me.lblCivFrostGiant.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblCivTitans.factionable = True
+        Me.lblCivTitans.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCivTitans.ForeColor = System.Drawing.Color.White
+        Me.lblCivTitans.Location = New System.Drawing.Point(1, 369)
+        Me.lblCivTitans.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblCivTitans.Name = "lblCivTitans"
+        Me.lblCivTitans.playableAdvMode = True
+        Me.lblCivTitans.playableFortMode = False
+        Me.lblCivTitans.simpleCivName = "TITANS"
+        Me.lblCivTitans.Size = New System.Drawing.Size(96, 22)
+        Me.lblCivTitans.TabIndex = 6
+        Me.lblCivTitans.Tag = ""
+        Me.lblCivTitans.Text = "Titans"
+        Me.lblCivTitans.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblCivBanshees
+        'lblCivNightCreatures
         '
-        Me.lblCivBanshees.factionable = True
-        Me.lblCivBanshees.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCivBanshees.ForeColor = System.Drawing.Color.White
-        Me.lblCivBanshees.Location = New System.Drawing.Point(1, 393)
-        Me.lblCivBanshees.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
-        Me.lblCivBanshees.Name = "lblCivBanshees"
-        Me.lblCivBanshees.playableAdvMode = True
-        Me.lblCivBanshees.playableFortMode = False
-        Me.lblCivBanshees.simpleCivName = "BANSHEE"
-        Me.lblCivBanshees.Size = New System.Drawing.Size(96, 22)
-        Me.lblCivBanshees.TabIndex = 6
-        Me.lblCivBanshees.Tag = ""
-        Me.lblCivBanshees.Text = "Banshees"
-        Me.lblCivBanshees.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblCivNightCreatures.factionable = True
+        Me.lblCivNightCreatures.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCivNightCreatures.ForeColor = System.Drawing.Color.White
+        Me.lblCivNightCreatures.Location = New System.Drawing.Point(1, 345)
+        Me.lblCivNightCreatures.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblCivNightCreatures.Name = "lblCivNightCreatures"
+        Me.lblCivNightCreatures.playableAdvMode = True
+        Me.lblCivNightCreatures.playableFortMode = False
+        Me.lblCivNightCreatures.simpleCivName = "NIGHTCREATURE"
+        Me.lblCivNightCreatures.Size = New System.Drawing.Size(96, 22)
+        Me.lblCivNightCreatures.TabIndex = 6
+        Me.lblCivNightCreatures.Tag = ""
+        Me.lblCivNightCreatures.Text = "Night Creatures"
+        Me.lblCivNightCreatures.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblCivWarlock
+        'lblCivNecromancers
         '
-        Me.lblCivWarlock.factionable = True
-        Me.lblCivWarlock.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCivWarlock.ForeColor = System.Drawing.Color.White
-        Me.lblCivWarlock.Location = New System.Drawing.Point(1, 441)
-        Me.lblCivWarlock.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
-        Me.lblCivWarlock.Name = "lblCivWarlock"
-        Me.lblCivWarlock.playableAdvMode = True
-        Me.lblCivWarlock.playableFortMode = False
-        Me.lblCivWarlock.simpleCivName = "WARLOCK"
-        Me.lblCivWarlock.Size = New System.Drawing.Size(96, 22)
-        Me.lblCivWarlock.TabIndex = 6
-        Me.lblCivWarlock.Tag = ""
-        Me.lblCivWarlock.Text = "Warlocks"
-        Me.lblCivWarlock.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblCivNecromancers.factionable = True
+        Me.lblCivNecromancers.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCivNecromancers.ForeColor = System.Drawing.Color.White
+        Me.lblCivNecromancers.Location = New System.Drawing.Point(1, 393)
+        Me.lblCivNecromancers.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblCivNecromancers.Name = "lblCivNecromancers"
+        Me.lblCivNecromancers.playableAdvMode = True
+        Me.lblCivNecromancers.playableFortMode = False
+        Me.lblCivNecromancers.simpleCivName = "NECROMANCERS"
+        Me.lblCivNecromancers.Size = New System.Drawing.Size(96, 22)
+        Me.lblCivNecromancers.TabIndex = 6
+        Me.lblCivNecromancers.Tag = ""
+        Me.lblCivNecromancers.Text = "Necromancers"
+        Me.lblCivNecromancers.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblCivKoboldCamp
         '
         Me.lblCivKoboldCamp.factionable = True
         Me.lblCivKoboldCamp.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCivKoboldCamp.ForeColor = System.Drawing.Color.White
-        Me.lblCivKoboldCamp.Location = New System.Drawing.Point(1, 291)
+        Me.lblCivKoboldCamp.Location = New System.Drawing.Point(1, 243)
         Me.lblCivKoboldCamp.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
         Me.lblCivKoboldCamp.Name = "lblCivKoboldCamp"
         Me.lblCivKoboldCamp.playableAdvMode = True
@@ -5201,63 +5364,29 @@ Partial Class MainForm
         Me.lblCivKoboldCamp.Text = "Kobolds"
         Me.lblCivKoboldCamp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblCivCentaurs
+        'lblCivWerebeasts
         '
-        Me.lblCivCentaurs.factionable = True
-        Me.lblCivCentaurs.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCivCentaurs.ForeColor = System.Drawing.Color.White
-        Me.lblCivCentaurs.Location = New System.Drawing.Point(1, 267)
-        Me.lblCivCentaurs.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
-        Me.lblCivCentaurs.Name = "lblCivCentaurs"
-        Me.lblCivCentaurs.playableAdvMode = True
-        Me.lblCivCentaurs.playableFortMode = False
-        Me.lblCivCentaurs.simpleCivName = "CENTAUREN"
-        Me.lblCivCentaurs.Size = New System.Drawing.Size(96, 22)
-        Me.lblCivCentaurs.TabIndex = 23
-        Me.lblCivCentaurs.Tag = ""
-        Me.lblCivCentaurs.Text = "Centaurs"
-        Me.lblCivCentaurs.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'lblCivWerewolves
-        '
-        Me.lblCivWerewolves.factionable = True
-        Me.lblCivWerewolves.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCivWerewolves.ForeColor = System.Drawing.Color.White
-        Me.lblCivWerewolves.Location = New System.Drawing.Point(1, 339)
-        Me.lblCivWerewolves.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
-        Me.lblCivWerewolves.Name = "lblCivWerewolves"
-        Me.lblCivWerewolves.playableAdvMode = True
-        Me.lblCivWerewolves.playableFortMode = False
-        Me.lblCivWerewolves.simpleCivName = "MDF_WEREWOLF"
-        Me.lblCivWerewolves.Size = New System.Drawing.Size(96, 22)
-        Me.lblCivWerewolves.TabIndex = 18
-        Me.lblCivWerewolves.Tag = ""
-        Me.lblCivWerewolves.Text = "Werewolves"
-        Me.lblCivWerewolves.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'lblCivDrow
-        '
-        Me.lblCivDrow.factionable = True
-        Me.lblCivDrow.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCivDrow.ForeColor = System.Drawing.Color.White
-        Me.lblCivDrow.Location = New System.Drawing.Point(1, 165)
-        Me.lblCivDrow.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
-        Me.lblCivDrow.Name = "lblCivDrow"
-        Me.lblCivDrow.playableAdvMode = True
-        Me.lblCivDrow.playableFortMode = False
-        Me.lblCivDrow.simpleCivName = "DROW"
-        Me.lblCivDrow.Size = New System.Drawing.Size(96, 22)
-        Me.lblCivDrow.TabIndex = 6
-        Me.lblCivDrow.Tag = ""
-        Me.lblCivDrow.Text = "Drow"
-        Me.lblCivDrow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblCivWerebeasts.factionable = True
+        Me.lblCivWerebeasts.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCivWerebeasts.ForeColor = System.Drawing.Color.White
+        Me.lblCivWerebeasts.Location = New System.Drawing.Point(1, 291)
+        Me.lblCivWerebeasts.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblCivWerebeasts.Name = "lblCivWerebeasts"
+        Me.lblCivWerebeasts.playableAdvMode = True
+        Me.lblCivWerebeasts.playableFortMode = False
+        Me.lblCivWerebeasts.simpleCivName = "MDF_WEREBEASTS"
+        Me.lblCivWerebeasts.Size = New System.Drawing.Size(96, 22)
+        Me.lblCivWerebeasts.TabIndex = 18
+        Me.lblCivWerebeasts.Tag = ""
+        Me.lblCivWerebeasts.Text = "Werebeasts"
+        Me.lblCivWerebeasts.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblCivSuccubus
         '
         Me.lblCivSuccubus.factionable = True
         Me.lblCivSuccubus.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCivSuccubus.ForeColor = System.Drawing.Color.White
-        Me.lblCivSuccubus.Location = New System.Drawing.Point(1, 237)
+        Me.lblCivSuccubus.Location = New System.Drawing.Point(1, 213)
         Me.lblCivSuccubus.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
         Me.lblCivSuccubus.Name = "lblCivSuccubus"
         Me.lblCivSuccubus.playableAdvMode = True
@@ -5274,7 +5403,7 @@ Partial Class MainForm
         Me.lblCivGoblin.factionable = True
         Me.lblCivGoblin.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCivGoblin.ForeColor = System.Drawing.Color.White
-        Me.lblCivGoblin.Location = New System.Drawing.Point(1, 189)
+        Me.lblCivGoblin.Location = New System.Drawing.Point(1, 165)
         Me.lblCivGoblin.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
         Me.lblCivGoblin.Name = "lblCivGoblin"
         Me.lblCivGoblin.playableAdvMode = True
@@ -5352,6 +5481,548 @@ Partial Class MainForm
         Me.lblCivInvasions.Text = "Invasions"
         Me.lblCivInvasions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'tabFortDef
+        '
+        Me.tabFortDef.BackColor = System.Drawing.Color.White
+        Me.tabFortDef.BackgroundImage = Global.MasterworkDwarfFortress.My.Resources.Resources.fb_1024x576c
+        Me.tabFortDef.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tabFortDef.Controls.Add(Me.panFortDef)
+        Me.tabFortDef.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.tabFortDef.IsClosable = False
+        Me.tabFortDef.Location = New System.Drawing.Point(1, 32)
+        Me.tabFortDef.Name = "tabFortDef"
+        Me.tabFortDef.Size = New System.Drawing.Size(1024, 576)
+        Me.tabFortDef.TabIndex = 12
+        Me.tabFortDef.Text = "Fortress Defense"
+        '
+        'panFortDef
+        '
+        Me.panFortDef.BackColor = System.Drawing.Color.FromArgb(CType(CType(130, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.panFortDef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panFortDef.Controls.Add(Me.tableLayoutFortDef)
+        Me.panFortDef.ForeColor = System.Drawing.Color.White
+        Me.panFortDef.Location = New System.Drawing.Point(32, 46)
+        Me.panFortDef.Name = "panFortDef"
+        Me.panFortDef.Size = New System.Drawing.Size(961, 516)
+        Me.panFortDef.TabIndex = 19
+        '
+        'tableLayoutFortDef
+        '
+        Me.tableLayoutFortDef.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.tableLayoutFortDef.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tableLayoutFortDef.ColumnCount = 14
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82.0!))
+        Me.tableLayoutFortDef.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdActive, 1, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdRaptormen, 0, 20)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdPandashi, 0, 19)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdHarpies, 0, 18)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdBadgermen, 0, 17)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdHardTitle, 0, 16)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdSpiderfiends, 0, 15)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdNightwings, 0, 14)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdMinotaurs, 0, 13)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdJotuns, 0, 12)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdMedTitle, 0, 11)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdFaction, 4, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdAdv, 3, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdFort, 2, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdCaravans, 5, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdGuards, 6, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdInvasions, 7, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdAI, 8, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdSkills, 11, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdMats, 10, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdSkulk, 9, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdSeasons, 12, 0)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdBeakWolves, 0, 1)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdFerric, 0, 2)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdFoulBlendecs, 0, 3)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdFrogmen, 0, 4)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdHellfire, 0, 5)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdSerpentmen, 0, 6)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdStranglers, 0, 7)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdWarElephants, 0, 8)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdWhiteTigermen, 0, 9)
+        Me.tableLayoutFortDef.Controls.Add(Me.lblFdWerewolves, 0, 10)
+        Me.tableLayoutFortDef.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tableLayoutFortDef.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize
+        Me.tableLayoutFortDef.Location = New System.Drawing.Point(0, 0)
+        Me.tableLayoutFortDef.Margin = New System.Windows.Forms.Padding(1)
+        Me.tableLayoutFortDef.Name = "tableLayoutFortDef"
+        Me.tableLayoutFortDef.RowCount = 21
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24.0!))
+        Me.tableLayoutFortDef.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.tableLayoutFortDef.Size = New System.Drawing.Size(959, 514)
+        Me.tableLayoutFortDef.TabIndex = 16
+        '
+        'lblFdRaptormen
+        '
+        Me.lblFdRaptormen.factionable = True
+        Me.lblFdRaptormen.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdRaptormen.ForeColor = System.Drawing.Color.White
+        Me.lblFdRaptormen.Location = New System.Drawing.Point(1, 489)
+        Me.lblFdRaptormen.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdRaptormen.Name = "lblFdRaptormen"
+        Me.lblFdRaptormen.playableAdvMode = False
+        Me.lblFdRaptormen.playableFortMode = False
+        Me.lblFdRaptormen.simpleCivName = "RAPTOR_FD"
+        Me.lblFdRaptormen.Size = New System.Drawing.Size(97, 22)
+        Me.lblFdRaptormen.TabIndex = 33
+        Me.lblFdRaptormen.Tag = ""
+        Me.lblFdRaptormen.Text = "Raptormen"
+        Me.lblFdRaptormen.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdPandashi
+        '
+        Me.lblFdPandashi.factionable = True
+        Me.lblFdPandashi.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdPandashi.ForeColor = System.Drawing.Color.White
+        Me.lblFdPandashi.Location = New System.Drawing.Point(1, 465)
+        Me.lblFdPandashi.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdPandashi.Name = "lblFdPandashi"
+        Me.lblFdPandashi.playableAdvMode = False
+        Me.lblFdPandashi.playableFortMode = False
+        Me.lblFdPandashi.simpleCivName = "PANDASHIFD"
+        Me.lblFdPandashi.Size = New System.Drawing.Size(97, 22)
+        Me.lblFdPandashi.TabIndex = 33
+        Me.lblFdPandashi.Tag = ""
+        Me.lblFdPandashi.Text = "Pandashi"
+        Me.lblFdPandashi.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdHarpies
+        '
+        Me.lblFdHarpies.factionable = True
+        Me.lblFdHarpies.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdHarpies.ForeColor = System.Drawing.Color.White
+        Me.lblFdHarpies.Location = New System.Drawing.Point(1, 441)
+        Me.lblFdHarpies.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdHarpies.Name = "lblFdHarpies"
+        Me.lblFdHarpies.playableAdvMode = False
+        Me.lblFdHarpies.playableFortMode = False
+        Me.lblFdHarpies.simpleCivName = "HARPYFD"
+        Me.lblFdHarpies.Size = New System.Drawing.Size(97, 22)
+        Me.lblFdHarpies.TabIndex = 33
+        Me.lblFdHarpies.Tag = ""
+        Me.lblFdHarpies.Text = "Harpies"
+        Me.lblFdHarpies.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdBadgermen
+        '
+        Me.lblFdBadgermen.factionable = True
+        Me.lblFdBadgermen.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdBadgermen.ForeColor = System.Drawing.Color.White
+        Me.lblFdBadgermen.Location = New System.Drawing.Point(1, 417)
+        Me.lblFdBadgermen.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdBadgermen.Name = "lblFdBadgermen"
+        Me.lblFdBadgermen.playableAdvMode = False
+        Me.lblFdBadgermen.playableFortMode = False
+        Me.lblFdBadgermen.simpleCivName = "BROCK_FD"
+        Me.lblFdBadgermen.Size = New System.Drawing.Size(97, 22)
+        Me.lblFdBadgermen.TabIndex = 33
+        Me.lblFdBadgermen.Tag = ""
+        Me.lblFdBadgermen.Text = "Badgermen"
+        Me.lblFdBadgermen.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdHardTitle
+        '
+        Me.lblFdHardTitle.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdHardTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(130, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.tableLayoutFortDef.SetColumnSpan(Me.lblFdHardTitle, 14)
+        Me.lblFdHardTitle.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdHardTitle.ForeColor = System.Drawing.Color.White
+        Me.lblFdHardTitle.Location = New System.Drawing.Point(1, 393)
+        Me.lblFdHardTitle.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdHardTitle.Name = "lblFdHardTitle"
+        Me.lblFdHardTitle.Size = New System.Drawing.Size(952, 23)
+        Me.lblFdHardTitle.TabIndex = 6
+        Me.lblFdHardTitle.Text = "Hard"
+        Me.lblFdHardTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblFdSpiderfiends
+        '
+        Me.lblFdSpiderfiends.factionable = True
+        Me.lblFdSpiderfiends.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdSpiderfiends.ForeColor = System.Drawing.Color.White
+        Me.lblFdSpiderfiends.Location = New System.Drawing.Point(1, 369)
+        Me.lblFdSpiderfiends.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdSpiderfiends.Name = "lblFdSpiderfiends"
+        Me.lblFdSpiderfiends.playableAdvMode = False
+        Me.lblFdSpiderfiends.playableFortMode = False
+        Me.lblFdSpiderfiends.simpleCivName = "WEBBERFD"
+        Me.lblFdSpiderfiends.Size = New System.Drawing.Size(97, 22)
+        Me.lblFdSpiderfiends.TabIndex = 33
+        Me.lblFdSpiderfiends.Tag = ""
+        Me.lblFdSpiderfiends.Text = "Spider Fiends"
+        Me.lblFdSpiderfiends.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdNightwings
+        '
+        Me.lblFdNightwings.factionable = True
+        Me.lblFdNightwings.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdNightwings.ForeColor = System.Drawing.Color.White
+        Me.lblFdNightwings.Location = New System.Drawing.Point(1, 345)
+        Me.lblFdNightwings.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdNightwings.Name = "lblFdNightwings"
+        Me.lblFdNightwings.playableAdvMode = False
+        Me.lblFdNightwings.playableFortMode = False
+        Me.lblFdNightwings.simpleCivName = "NIGHTWINGFD"
+        Me.lblFdNightwings.Size = New System.Drawing.Size(97, 22)
+        Me.lblFdNightwings.TabIndex = 33
+        Me.lblFdNightwings.Tag = ""
+        Me.lblFdNightwings.Text = "Nightwings"
+        Me.lblFdNightwings.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdMinotaurs
+        '
+        Me.lblFdMinotaurs.factionable = True
+        Me.lblFdMinotaurs.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdMinotaurs.ForeColor = System.Drawing.Color.White
+        Me.lblFdMinotaurs.Location = New System.Drawing.Point(1, 321)
+        Me.lblFdMinotaurs.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdMinotaurs.Name = "lblFdMinotaurs"
+        Me.lblFdMinotaurs.playableAdvMode = False
+        Me.lblFdMinotaurs.playableFortMode = False
+        Me.lblFdMinotaurs.simpleCivName = "HORNEDFD"
+        Me.lblFdMinotaurs.Size = New System.Drawing.Size(97, 22)
+        Me.lblFdMinotaurs.TabIndex = 33
+        Me.lblFdMinotaurs.Tag = ""
+        Me.lblFdMinotaurs.Text = "Minotaurs"
+        Me.lblFdMinotaurs.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdJotuns
+        '
+        Me.lblFdJotuns.factionable = True
+        Me.lblFdJotuns.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdJotuns.ForeColor = System.Drawing.Color.White
+        Me.lblFdJotuns.Location = New System.Drawing.Point(1, 297)
+        Me.lblFdJotuns.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdJotuns.Name = "lblFdJotuns"
+        Me.lblFdJotuns.playableAdvMode = False
+        Me.lblFdJotuns.playableFortMode = False
+        Me.lblFdJotuns.simpleCivName = "JOTUNFD"
+        Me.lblFdJotuns.Size = New System.Drawing.Size(97, 22)
+        Me.lblFdJotuns.TabIndex = 33
+        Me.lblFdJotuns.Tag = ""
+        Me.lblFdJotuns.Text = "Jotuns"
+        Me.lblFdJotuns.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdMedTitle
+        '
+        Me.lblFdMedTitle.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdMedTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(130, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.tableLayoutFortDef.SetColumnSpan(Me.lblFdMedTitle, 14)
+        Me.lblFdMedTitle.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdMedTitle.ForeColor = System.Drawing.Color.White
+        Me.lblFdMedTitle.Location = New System.Drawing.Point(1, 273)
+        Me.lblFdMedTitle.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdMedTitle.Name = "lblFdMedTitle"
+        Me.lblFdMedTitle.Size = New System.Drawing.Size(952, 23)
+        Me.lblFdMedTitle.TabIndex = 6
+        Me.lblFdMedTitle.Text = "Medium"
+        Me.lblFdMedTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblFdCaravans
+        '
+        Me.lblFdCaravans.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdCaravans.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdCaravans.ForeColor = System.Drawing.Color.White
+        Me.lblFdCaravans.Location = New System.Drawing.Point(360, 1)
+        Me.lblFdCaravans.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdCaravans.Name = "lblFdCaravans"
+        Me.lblFdCaravans.Size = New System.Drawing.Size(76, 30)
+        Me.lblFdCaravans.TabIndex = 6
+        Me.lblFdCaravans.Text = "Caravans"
+        Me.lblFdCaravans.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblFdInvasions
+        '
+        Me.lblFdInvasions.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFdInvasions.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdInvasions.ForeColor = System.Drawing.Color.White
+        Me.lblFdInvasions.Location = New System.Drawing.Point(507, 1)
+        Me.lblFdInvasions.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.lblFdInvasions.Name = "lblFdInvasions"
+        Me.lblFdInvasions.Size = New System.Drawing.Size(76, 30)
+        Me.lblFdInvasions.TabIndex = 6
+        Me.lblFdInvasions.Text = "Invasions"
+        Me.lblFdInvasions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblFdBeakWolves
+        '
+        Me.lblFdBeakWolves.factionable = True
+        Me.lblFdBeakWolves.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdBeakWolves.ForeColor = System.Drawing.Color.White
+        Me.lblFdBeakWolves.Location = New System.Drawing.Point(1, 33)
+        Me.lblFdBeakWolves.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdBeakWolves.Name = "lblFdBeakWolves"
+        Me.lblFdBeakWolves.playableAdvMode = False
+        Me.lblFdBeakWolves.playableFortMode = False
+        Me.lblFdBeakWolves.simpleCivName = "BEAKWOLFFD"
+        Me.lblFdBeakWolves.Size = New System.Drawing.Size(97, 22)
+        Me.lblFdBeakWolves.TabIndex = 33
+        Me.lblFdBeakWolves.Tag = ""
+        Me.lblFdBeakWolves.Text = "Beakwolves"
+        Me.lblFdBeakWolves.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdFerric
+        '
+        Me.lblFdFerric.factionable = True
+        Me.lblFdFerric.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdFerric.ForeColor = System.Drawing.Color.White
+        Me.lblFdFerric.Location = New System.Drawing.Point(1, 57)
+        Me.lblFdFerric.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdFerric.Name = "lblFdFerric"
+        Me.lblFdFerric.playableAdvMode = False
+        Me.lblFdFerric.playableFortMode = False
+        Me.lblFdFerric.simpleCivName = "FERRIC_FD"
+        Me.lblFdFerric.Size = New System.Drawing.Size(96, 22)
+        Me.lblFdFerric.TabIndex = 34
+        Me.lblFdFerric.Tag = ""
+        Me.lblFdFerric.Text = "Ferric Elves"
+        Me.lblFdFerric.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdFoulBlendecs
+        '
+        Me.lblFdFoulBlendecs.factionable = True
+        Me.lblFdFoulBlendecs.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdFoulBlendecs.ForeColor = System.Drawing.Color.White
+        Me.lblFdFoulBlendecs.Location = New System.Drawing.Point(1, 81)
+        Me.lblFdFoulBlendecs.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdFoulBlendecs.Name = "lblFdFoulBlendecs"
+        Me.lblFdFoulBlendecs.playableAdvMode = False
+        Me.lblFdFoulBlendecs.playableFortMode = False
+        Me.lblFdFoulBlendecs.simpleCivName = "FOULFD"
+        Me.lblFdFoulBlendecs.Size = New System.Drawing.Size(96, 22)
+        Me.lblFdFoulBlendecs.TabIndex = 34
+        Me.lblFdFoulBlendecs.Tag = ""
+        Me.lblFdFoulBlendecs.Text = "Foul Blendecs"
+        Me.lblFdFoulBlendecs.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdFrogmen
+        '
+        Me.lblFdFrogmen.factionable = True
+        Me.lblFdFrogmen.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdFrogmen.ForeColor = System.Drawing.Color.White
+        Me.lblFdFrogmen.Location = New System.Drawing.Point(1, 105)
+        Me.lblFdFrogmen.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdFrogmen.Name = "lblFdFrogmen"
+        Me.lblFdFrogmen.playableAdvMode = False
+        Me.lblFdFrogmen.playableFortMode = False
+        Me.lblFdFrogmen.simpleCivName = "KERMITFD"
+        Me.lblFdFrogmen.Size = New System.Drawing.Size(96, 22)
+        Me.lblFdFrogmen.TabIndex = 34
+        Me.lblFdFrogmen.Tag = ""
+        Me.lblFdFrogmen.Text = "Frogmen"
+        Me.lblFdFrogmen.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdHellfire
+        '
+        Me.lblFdHellfire.factionable = True
+        Me.lblFdHellfire.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdHellfire.ForeColor = System.Drawing.Color.White
+        Me.lblFdHellfire.Location = New System.Drawing.Point(1, 129)
+        Me.lblFdHellfire.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdHellfire.Name = "lblFdHellfire"
+        Me.lblFdHellfire.playableAdvMode = False
+        Me.lblFdHellfire.playableFortMode = False
+        Me.lblFdHellfire.simpleCivName = "HELLFIREFD"
+        Me.lblFdHellfire.Size = New System.Drawing.Size(96, 22)
+        Me.lblFdHellfire.TabIndex = 34
+        Me.lblFdHellfire.Tag = ""
+        Me.lblFdHellfire.Text = "Hellfire Imps"
+        Me.lblFdHellfire.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdSerpentmen
+        '
+        Me.lblFdSerpentmen.factionable = True
+        Me.lblFdSerpentmen.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdSerpentmen.ForeColor = System.Drawing.Color.White
+        Me.lblFdSerpentmen.Location = New System.Drawing.Point(1, 153)
+        Me.lblFdSerpentmen.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdSerpentmen.Name = "lblFdSerpentmen"
+        Me.lblFdSerpentmen.playableAdvMode = False
+        Me.lblFdSerpentmen.playableFortMode = False
+        Me.lblFdSerpentmen.simpleCivName = "SERPENTINEFD"
+        Me.lblFdSerpentmen.Size = New System.Drawing.Size(96, 22)
+        Me.lblFdSerpentmen.TabIndex = 34
+        Me.lblFdSerpentmen.Tag = ""
+        Me.lblFdSerpentmen.Text = "Serpentmen"
+        Me.lblFdSerpentmen.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdStranglers
+        '
+        Me.lblFdStranglers.factionable = True
+        Me.lblFdStranglers.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdStranglers.ForeColor = System.Drawing.Color.White
+        Me.lblFdStranglers.Location = New System.Drawing.Point(1, 177)
+        Me.lblFdStranglers.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdStranglers.Name = "lblFdStranglers"
+        Me.lblFdStranglers.playableAdvMode = False
+        Me.lblFdStranglers.playableFortMode = False
+        Me.lblFdStranglers.simpleCivName = "STRANGLERFD"
+        Me.lblFdStranglers.Size = New System.Drawing.Size(96, 22)
+        Me.lblFdStranglers.TabIndex = 34
+        Me.lblFdStranglers.Tag = ""
+        Me.lblFdStranglers.Text = "Stranglers"
+        Me.lblFdStranglers.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdWarElephants
+        '
+        Me.lblFdWarElephants.factionable = True
+        Me.lblFdWarElephants.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdWarElephants.ForeColor = System.Drawing.Color.White
+        Me.lblFdWarElephants.Location = New System.Drawing.Point(1, 201)
+        Me.lblFdWarElephants.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdWarElephants.Name = "lblFdWarElephants"
+        Me.lblFdWarElephants.playableAdvMode = False
+        Me.lblFdWarElephants.playableFortMode = False
+        Me.lblFdWarElephants.simpleCivName = "ELEPHANTFD"
+        Me.lblFdWarElephants.Size = New System.Drawing.Size(96, 22)
+        Me.lblFdWarElephants.TabIndex = 34
+        Me.lblFdWarElephants.Tag = ""
+        Me.lblFdWarElephants.Text = "War Elephants"
+        Me.lblFdWarElephants.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdWhiteTigermen
+        '
+        Me.lblFdWhiteTigermen.factionable = True
+        Me.lblFdWhiteTigermen.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdWhiteTigermen.ForeColor = System.Drawing.Color.White
+        Me.lblFdWhiteTigermen.Location = New System.Drawing.Point(1, 225)
+        Me.lblFdWhiteTigermen.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdWhiteTigermen.Name = "lblFdWhiteTigermen"
+        Me.lblFdWhiteTigermen.playableAdvMode = False
+        Me.lblFdWhiteTigermen.playableFortMode = False
+        Me.lblFdWhiteTigermen.simpleCivName = "TIGERGIRLNYAFD"
+        Me.lblFdWhiteTigermen.Size = New System.Drawing.Size(96, 22)
+        Me.lblFdWhiteTigermen.TabIndex = 34
+        Me.lblFdWhiteTigermen.Tag = ""
+        Me.lblFdWhiteTigermen.Text = "White Tigermen"
+        Me.lblFdWhiteTigermen.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblFdWerewolves
+        '
+        Me.lblFdWerewolves.factionable = True
+        Me.lblFdWerewolves.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFdWerewolves.ForeColor = System.Drawing.Color.White
+        Me.lblFdWerewolves.Location = New System.Drawing.Point(1, 249)
+        Me.lblFdWerewolves.Margin = New System.Windows.Forms.Padding(1, 1, 6, 0)
+        Me.lblFdWerewolves.Name = "lblFdWerewolves"
+        Me.lblFdWerewolves.playableAdvMode = False
+        Me.lblFdWerewolves.playableFortMode = False
+        Me.lblFdWerewolves.simpleCivName = "WOLFFD"
+        Me.lblFdWerewolves.Size = New System.Drawing.Size(96, 22)
+        Me.lblFdWerewolves.TabIndex = 34
+        Me.lblFdWerewolves.Tag = ""
+        Me.lblFdWerewolves.Text = "Werewolves"
+        Me.lblFdWerewolves.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'tabMods
+        '
+        Me.tabMods.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.tabMods.BackgroundImage = Global.MasterworkDwarfFortress.My.Resources.Resources.fb_1024x576c
+        Me.tabMods.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tabMods.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.tabMods.IsClosable = False
+        Me.tabMods.Location = New System.Drawing.Point(1, 32)
+        Me.tabMods.Name = "tabMods"
+        Me.tabMods.Size = New System.Drawing.Size(1024, 576)
+        Me.tabMods.TabIndex = 11
+        Me.tabMods.Text = "Mods"
+        '
+        'tabDwarves
+        '
+        Me.tabDwarves.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.tabDwarves.BackgroundImage = Global.MasterworkDwarfFortress.My.Resources.Resources.fb_1024x576c
+        Me.tabDwarves.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tabDwarves.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.tabDwarves.IsClosable = False
+        Me.tabDwarves.Location = New System.Drawing.Point(1, 32)
+        Me.tabDwarves.Name = "tabDwarves"
+        Me.tabDwarves.Size = New System.Drawing.Size(1024, 576)
+        Me.tabDwarves.TabIndex = 7
+        Me.tabDwarves.Text = "Dwarves"
+        '
+        'tabOrcs
+        '
+        Me.tabOrcs.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.tabOrcs.BackgroundImage = Global.MasterworkDwarfFortress.My.Resources.Resources.fb_1024x576c
+        Me.tabOrcs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tabOrcs.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.tabOrcs.IsClosable = False
+        Me.tabOrcs.Location = New System.Drawing.Point(1, 32)
+        Me.tabOrcs.Name = "tabOrcs"
+        Me.tabOrcs.Size = New System.Drawing.Size(1024, 576)
+        Me.tabOrcs.TabIndex = 8
+        Me.tabOrcs.Text = "Orcs"
+        '
+        'tabSuccubi
+        '
+        Me.tabSuccubi.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.tabSuccubi.BackgroundImage = Global.MasterworkDwarfFortress.My.Resources.Resources.fb_1024x576c
+        Me.tabSuccubi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tabSuccubi.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.tabSuccubi.IsClosable = False
+        Me.tabSuccubi.Location = New System.Drawing.Point(1, 32)
+        Me.tabSuccubi.Name = "tabSuccubi"
+        Me.tabSuccubi.Size = New System.Drawing.Size(1024, 576)
+        Me.tabSuccubi.TabIndex = 9
+        Me.tabSuccubi.Text = "Succubi"
+        '
+        'tabGnomes
+        '
+        Me.tabGnomes.BackColor = System.Drawing.Color.White
+        Me.tabGnomes.BackgroundImage = Global.MasterworkDwarfFortress.My.Resources.Resources.fb_1024x576c
+        Me.tabGnomes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.tabGnomes.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.tabGnomes.IsClosable = False
+        Me.tabGnomes.Location = New System.Drawing.Point(1, 32)
+        Me.tabGnomes.Name = "tabGnomes"
+        Me.tabGnomes.Size = New System.Drawing.Size(1024, 576)
+        Me.tabGnomes.TabIndex = 10
+        Me.tabGnomes.Text = "Gnomes"
+        '
         'tabWorldGen
         '
         Me.tabWorldGen.BackColor = System.Drawing.SystemColors.ControlDark
@@ -5369,7 +6040,7 @@ Partial Class MainForm
         Me.tabWorldGen.IsClosable = False
         Me.tabWorldGen.Location = New System.Drawing.Point(1, 32)
         Me.tabWorldGen.Name = "tabWorldGen"
-        Me.tabWorldGen.Size = New System.Drawing.Size(1024, 517)
+        Me.tabWorldGen.Size = New System.Drawing.Size(1024, 576)
         Me.tabWorldGen.TabIndex = 6
         Me.tabWorldGen.Text = "World Gen."
         '
@@ -5711,7 +6382,7 @@ Partial Class MainForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(1026, 624)
+        Me.ClientSize = New System.Drawing.Size(1026, 683)
         Me.Controls.Add(Me.tabMain)
         Me.Controls.Add(Me.ribbonMain)
         Me.DoubleBuffered = True
@@ -5776,22 +6447,25 @@ Partial Class MainForm
         Me.grpEmbarkMigrants.ResumeLayout(False)
         Me.grpEmbarkMigrants.PerformLayout()
         Me.grpGraphics.ResumeLayout(False)
-        Me.grpTextWillBeText.ResumeLayout(False)
+        Me.grpTWBT.ResumeLayout(False)
         Me.grpFpsAndSound.ResumeLayout(False)
         CType(Me.optNumVolume, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabCivs.ResumeLayout(False)
         Me.panCivTable.ResumeLayout(False)
         Me.tableLayoutCivs.ResumeLayout(False)
+        Me.tabFortDef.ResumeLayout(False)
+        Me.panFortDef.ResumeLayout(False)
+        Me.tableLayoutFortDef.ResumeLayout(False)
         Me.tabWorldGen.ResumeLayout(False)
-        Me.grpWorldGenMisc.ResumeLayout(false)
-        Me.grpWorldGenCaves.ResumeLayout(false)
-        Me.grpWorldGenLayers.ResumeLayout(false)
-        Me.grpWorldGenAreas.ResumeLayout(false)
-        Me.grpWorldGenAreas.PerformLayout
-        CType(Me.optNumHFSLevels,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
+        Me.grpWorldGenMisc.ResumeLayout(False)
+        Me.grpWorldGenCaves.ResumeLayout(False)
+        Me.grpWorldGenLayers.ResumeLayout(False)
+        Me.grpWorldGenAreas.ResumeLayout(False)
+        Me.grpWorldGenAreas.PerformLayout()
+        CType(Me.optNumHFSLevels, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
     Friend WithEvents ToolTipMaker As System.Windows.Forms.ToolTip
     Friend WithEvents optBtnRendermax As MasterworkDwarfFortress.optionSingleReplaceButton
     Friend WithEvents grpWorldGenHostiles As MasterworkDwarfFortress.mwGroupBox
@@ -6025,13 +6699,12 @@ End Sub
     Friend WithEvents lblCivKoboldCamp As MasterworkDwarfFortress.mwCivLabel
     Friend WithEvents lblCivHuman As MasterworkDwarfFortress.mwCivLabel
     Friend WithEvents lblCivElf As MasterworkDwarfFortress.mwCivLabel
-    Friend WithEvents lblCivDrow As MasterworkDwarfFortress.mwCivLabel
     Friend WithEvents lblCivGnome As MasterworkDwarfFortress.mwCivLabel
     Friend WithEvents lblCivGoblin As MasterworkDwarfFortress.mwCivLabel
-    Friend WithEvents lblCivFrostGiant As MasterworkDwarfFortress.mwCivLabel
-    Friend WithEvents lblCivWarlock As MasterworkDwarfFortress.mwCivLabel
-    Friend WithEvents lblCivAutomaton As MasterworkDwarfFortress.mwCivLabel
-    Friend WithEvents lblCivBanshees As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblCivTitans As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblCivNecromancers As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblCivVampires As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblCivNightCreatures As MasterworkDwarfFortress.mwCivLabel
     Friend WithEvents panCivTable As MasterworkDwarfFortress.mwPanel
     Friend WithEvents tabMain As KRBTabControl.KRBTabControl
     Friend WithEvents tabSettings As KRBTabControl.TabPageEx
@@ -6040,7 +6713,6 @@ End Sub
     Friend WithEvents optCbStartingLabors As MasterworkDwarfFortress.optionComboBoxToken
     Friend WithEvents lblStartingLabor As System.Windows.Forms.Label
     Friend WithEvents lblPlayableFort As System.Windows.Forms.Label
-    Friend WithEvents rBtnDatabase As System.Windows.Forms.RibbonButton
     Friend WithEvents rTabDev As System.Windows.Forms.RibbonTab
     Friend WithEvents rPanelDev As System.Windows.Forms.RibbonPanel
     Friend WithEvents rBtnTest As System.Windows.Forms.RibbonButton
@@ -6072,19 +6744,16 @@ End Sub
     Friend WithEvents rBtnDFMon As System.Windows.Forms.RibbonButton
     Friend WithEvents rBtnUtilDFMon As System.Windows.Forms.RibbonButton
     Public WithEvents optCbColors As MasterworkDwarfFortress.optionComboBoxFileReplace
-    Friend WithEvents lblCivWerewolves As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblCivWerebeasts As MasterworkDwarfFortress.mwCivLabel
     Friend WithEvents lblCivNaga As MasterworkDwarfFortress.mwCivLabel
-    Friend WithEvents lblCivCentaurs As MasterworkDwarfFortress.mwCivLabel
     Friend WithEvents lblCivBodyguards As System.Windows.Forms.Label
     Friend WithEvents lblCivAI As System.Windows.Forms.Label
     Friend WithEvents lblCivSkulk As System.Windows.Forms.Label
     Friend WithEvents lblCivSeason As System.Windows.Forms.Label
-    Friend WithEvents mwCbItemGraphics As MasterworkDwarfFortress.mwCheckBox
-    Friend WithEvents lblSettingsMessage As System.Windows.Forms.Label
     Public WithEvents optCbTwbtFonts As MasterworkDwarfFortress.optionComboBoxFileReplace
     Friend WithEvents tilesetFontViewer As MasterworkDwarfFortress.tilesetPreviewer
     Friend WithEvents tilesetViewer As MasterworkDwarfFortress.tilesetPreviewer
-    Friend WithEvents grpTextWillBeText As MasterworkDwarfFortress.mwGroupBox
+    Friend WithEvents grpTWBT As MasterworkDwarfFortress.mwGroupBox
     Friend WithEvents lblTwbtFont As System.Windows.Forms.Label
     Friend WithEvents lblTwbtZLevels As System.Windows.Forms.Label
     Friend WithEvents optNumPatternTwbtLevels As MasterworkDwarfFortress.optionNumericPattern
@@ -6092,5 +6761,45 @@ End Sub
     Friend WithEvents lblTimestream As System.Windows.Forms.Label
     Friend WithEvents lblCivHermit As MasterworkDwarfFortress.mwCivLabel
     Friend WithEvents NotifyIcon1 As System.Windows.Forms.NotifyIcon
+    Friend WithEvents tabDwarves As KRBTabControl.TabPageEx
+    Friend WithEvents tabOrcs As KRBTabControl.TabPageEx
+    Friend WithEvents tabSuccubi As KRBTabControl.TabPageEx
+    Friend WithEvents tabGnomes As KRBTabControl.TabPageEx
+    Friend WithEvents tabMods As KRBTabControl.TabPageEx
+    Friend WithEvents tabFortDef As KRBTabControl.TabPageEx
+    Friend WithEvents panFortDef As MasterworkDwarfFortress.mwPanel
+    Public WithEvents tableLayoutFortDef As MasterworkDwarfFortress.mwTableLayout
+    Friend WithEvents lblFdActive As System.Windows.Forms.Label
+    Friend WithEvents lblFdFaction As System.Windows.Forms.Label
+    Friend WithEvents lblFdAdv As System.Windows.Forms.Label
+    Friend WithEvents lblFdFort As System.Windows.Forms.Label
+    Friend WithEvents lblFdCaravans As System.Windows.Forms.Label
+    Friend WithEvents lblFdGuards As System.Windows.Forms.Label
+    Friend WithEvents lblFdInvasions As System.Windows.Forms.Label
+    Friend WithEvents lblFdAI As System.Windows.Forms.Label
+    Friend WithEvents lblFdSkills As System.Windows.Forms.Label
+    Friend WithEvents lblFdMats As System.Windows.Forms.Label
+    Friend WithEvents lblFdSkulk As System.Windows.Forms.Label
+    Friend WithEvents lblFdSeasons As System.Windows.Forms.Label
+    Friend WithEvents lblFdBeakWolves As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdFerric As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdWerewolves As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdWhiteTigermen As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdWarElephants As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdStranglers As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdSerpentmen As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdHellfire As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdFrogmen As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdFoulBlendecs As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdPandashi As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdHarpies As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdBadgermen As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdHardTitle As System.Windows.Forms.Label
+    Friend WithEvents lblFdSpiderfiends As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdNightwings As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdMinotaurs As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdJotuns As MasterworkDwarfFortress.mwCivLabel
+    Friend WithEvents lblFdMedTitle As System.Windows.Forms.Label
+    Friend WithEvents lblFdRaptormen As MasterworkDwarfFortress.mwCivLabel
 
 End Class

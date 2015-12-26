@@ -76,8 +76,7 @@ Imports Newtonsoft.Json
 
         Me.Text = "Masterwork Settings"
 
-        randomCreaturesExistCheck()
-        twbtCheck()
+        randomCreaturesExistCheck()        
         loadProfileCombo()
         checkEmbarkProfiles()
 
@@ -139,7 +138,8 @@ Imports Newtonsoft.Json
             tokenLoading.loadWorldGenTokens()
 
             'load all the civ table controls first
-            loadCivTable()
+            loadCivTable(Me.tableLayoutCivs)
+            loadCivTable(Me.tableLayoutFortDef)
 
             'load all our current options, and format our controls to the current theme
             initControls(Me, ToolTipMaker, True, True, True)
@@ -284,8 +284,7 @@ Imports Newtonsoft.Json
             Dim newSettings As New Dictionary(Of String, Object)
             saveSettings(tabMain, newSettings)
             'add any non-itoken control settings we want to save
-            newSettings.Add("cmbTileSets", cmbTileSets.SelectedValue)
-            newSettings.Add("mwCbItemGraphics", mwCbItemGraphics.Checked)
+            newSettings.Add("cmbTileSets", cmbTileSets.SelectedValue)            
             If rCheckWorldGen.Checked Then
                 newSettings.Add("WORLD_GEN", m_world_gen)
             Else
@@ -336,13 +335,7 @@ Imports Newtonsoft.Json
                     Dim value As String = optionSettings.Item("cmbTileSets")
                     cmbTileSets.SelectedValue = value
                     graphicsSets.switchGraphics(value, False)
-                End If
-                If optionSettings.ContainsKey("mwCbItemGraphics") Then
-                    Dim value As Boolean = optionSettings.Item("mwCbItemGraphics")
-                    mwCbItemGraphics.Checked = value
-                Else
-                    mwCbItemGraphics.Checked = False
-                End If
+                End If                
 
                 If rCheckWorldGen.Checked AndAlso optionSettings.ContainsKey("WORLD_GEN") Then
                     Dim currPath As String = findDfFilePath(globals.m_worldGenFileName)
@@ -891,9 +884,9 @@ Imports Newtonsoft.Json
 
     Dim civControlHeight As Integer = 24
 
-    Private Sub loadCivTable()
+    Private Sub loadCivTable(ByRef tableLayout As mwTableLayout)
         'width/height based on table cell sizes
-        civControlHeight = Me.tableLayoutCivs.GetControlFromPosition(0, 1).Height
+        civControlHeight = tableLayout.GetControlFromPosition(0, 1).Height
         Dim intCtrlWidth As Integer = 50
 
         'our main label that has all the information we'll need to load the various options
@@ -904,9 +897,9 @@ Imports Newtonsoft.Json
         ToolTipMaker.SetToolTip(lblCivCaravans, buildTriggerTooltip())
         ToolTipMaker.SetToolTip(lblCivInvasions, buildTriggerTooltip())
 
-        Me.tableLayoutCivs.SuspendLayout()
-        For idxRow As Integer = 1 To Me.tableLayoutCivs.RowCount - 1
-            civLabel = Me.tableLayoutCivs.GetControlFromPosition(0, idxRow)
+        tableLayout.SuspendLayout()
+        For idxRow As Integer = 1 To tableLayout.RowCount - 1
+            civLabel = TryCast(tableLayout.GetControlFromPosition(0, idxRow), mwCivLabel)
             If civLabel Is Nothing Then
                 Continue For
             Else
@@ -915,105 +908,108 @@ Imports Newtonsoft.Json
                 civName = civName.Replace(" ", "")
 
                 'add active option
-                buildSimpleCivButton("Active", civLabel.simpleCivName, "CIV_ACTIVE", colIndexes.idxActive, idxRow)
-                AddHandler CType(Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxActive, idxRow), optionSingleReplaceButton).CheckedChanged, AddressOf civActiveCheckedChanged
-                AddHandler CType(Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxActive, idxRow), optionSingleReplaceButton).optionLoaded, AddressOf civActiveLoaded
+                buildSimpleCivButton(tableLayout, "Active", civLabel.simpleCivName, "CIV_ACTIVE", colIndexes.idxActive, idxRow)
+                AddHandler CType(tableLayout.GetControlFromPosition(colIndexes.idxActive, idxRow), optionSingleReplaceButton).CheckedChanged, AddressOf civActiveCheckedChanged
+                AddHandler CType(tableLayout.GetControlFromPosition(colIndexes.idxActive, idxRow), optionSingleReplaceButton).optionLoaded, AddressOf civActiveLoaded
 
                 'add playable fortress mode option
-                buildSimpleCivButton("FortMode", civLabel.simpleCivName, "FORT_MODE", colIndexes.idxPlaybleFort, idxRow)
-                Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxPlaybleFort, idxRow).Enabled = civLabel.playableFortMode
+                buildSimpleCivButton(tableLayout, "FortMode", civLabel.simpleCivName, "FORT_MODE", colIndexes.idxPlaybleFort, idxRow)
+                tableLayout.GetControlFromPosition(colIndexes.idxPlaybleFort, idxRow).Enabled = civLabel.playableFortMode
 
                 'add playable adventure mode option
-                buildSimpleCivButton("AdvMode", civLabel.simpleCivName, "ADV_MODE", colIndexes.idxPlayableAdv, idxRow)
-                Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxPlayableAdv, idxRow).Enabled = civLabel.playableAdvMode
+                buildSimpleCivButton(tableLayout, "AdvMode", civLabel.simpleCivName, "ADV_MODE", colIndexes.idxPlayableAdv, idxRow)
+                tableLayout.GetControlFromPosition(colIndexes.idxPlayableAdv, idxRow).Enabled = civLabel.playableAdvMode
 
                 'add the faction option
-                intCtrlWidth = Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxFaction, 0).Width
+                intCtrlWidth = tableLayout.GetControlFromPosition(colIndexes.idxFaction, 0).Width
                 Dim cbMultiFaction As New optionComboBoxMultiToken
                 cbMultiFaction.Name = "optCbMultiCivFaction" & civName
                 formatCivTableControl(cbMultiFaction, intCtrlWidth, civControlHeight)
                 buildFactionOption(cbMultiFaction, civLabel.simpleCivName, civLabel.factionable)
-                Me.tableLayoutCivs.Controls.Add(cbMultiFaction, colIndexes.idxFaction, idxRow)
+                tableLayout.Controls.Add(cbMultiFaction, colIndexes.idxFaction, idxRow)
                 If Not civLabel.factionable Then cbMultiFaction.SelectedValue = "N/A" : cbMultiFaction.Enabled = False
 
-                'these options don't apply to the first row (hermit)
-                If idxRow > 1 Then
+                'these options don't apply to the first row (hermit) of the civ table
+                If (idxRow > 1 And tableLayout Is Me.tableLayoutCivs) Or (tableLayout IsNot Me.tableLayoutCivs) Then
                     'add a caravan option
-                    intCtrlWidth = Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxCaravan, 0).Width
+                    intCtrlWidth = tableLayout.GetControlFromPosition(colIndexes.idxCaravan, 0).Width
                     Dim cbCaravans As New optionComboPatternToken
                     cbCaravans.Name = "optCbPatternCivCaravans" & civName
                     formatCivTableControl(cbCaravans, intCtrlWidth, civControlHeight)
                     buildTriggerOption(cbCaravans, civLabel.simpleCivName & "_TRADE")
-                    Me.tableLayoutCivs.Controls.Add(cbCaravans, colIndexes.idxCaravan, idxRow)
+                    tableLayout.Controls.Add(cbCaravans, colIndexes.idxCaravan, idxRow)
 
                     'add caravan bodyguard option
-                    buildSimpleCivButton("Bodyguards", civLabel.simpleCivName, "BODYGUARDS", colIndexes.idxBodyguards, idxRow)
+                    buildSimpleCivButton(tableLayout, "Bodyguards", civLabel.simpleCivName, "BODYGUARDS", colIndexes.idxBodyguards, idxRow)
 
                     'add an invasion option
-                    intCtrlWidth = Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxInvasion, 0).Width
+                    intCtrlWidth = tableLayout.GetControlFromPosition(colIndexes.idxInvasion, 0).Width
                     Dim cbInvasions As New optionComboPatternToken
                     cbInvasions.Name = "optCbPatternCivInvasions" & civName
                     formatCivTableControl(cbInvasions, intCtrlWidth, civControlHeight)
                     buildTriggerOption(cbInvasions, civLabel.simpleCivName & "_SIEGE")
-                    Me.tableLayoutCivs.Controls.Add(cbInvasions, colIndexes.idxInvasion, idxRow)
+                    tableLayout.Controls.Add(cbInvasions, colIndexes.idxInvasion, idxRow)
 
                     'add AI type
-                    intCtrlWidth = Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxAi, 0).Width
+                    intCtrlWidth = tableLayout.GetControlFromPosition(colIndexes.idxAi, 0).Width
                     Dim cbAi As New optionComboCheckbox
                     cbAi.Name = "optCbCheckAi" & civName
                     formatCivTableControl(cbAi, intCtrlWidth, civControlHeight)
                     buildAiOption(cbAi, civLabel.simpleCivName)
-                    Me.tableLayoutCivs.Controls.Add(cbAi, colIndexes.idxAi, idxRow)
+                    tableLayout.Controls.Add(cbAi, colIndexes.idxAi, idxRow)
 
                     'add skulking option
-                    buildSimpleCivButton("Skulking", civLabel.simpleCivName, "SKULKING", colIndexes.idxSkulk, idxRow)
+                    buildSimpleCivButton(tableLayout, "Skulking", civLabel.simpleCivName, "SKULKING", colIndexes.idxSkulk, idxRow)
 
                     'add a material option
-                    intCtrlWidth = Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxMaterials, 0).Width
+                    intCtrlWidth = tableLayout.GetControlFromPosition(colIndexes.idxMaterials, 0).Width
                     Dim cbMats As optionComboPatternToken = New optionComboPatternToken
                     cbMats.Name = "optCbPatternCivMats" & civName
                     formatCivTableControl(cbMats, intCtrlWidth, civControlHeight)
                     buildMatOption(cbMats, civLabel.simpleCivName & "_MATERIALS")
-                    Me.tableLayoutCivs.Controls.Add(cbMats, colIndexes.idxMaterials, idxRow)
+                    tableLayout.Controls.Add(cbMats, colIndexes.idxMaterials, idxRow)
 
                     'add a skill option
-                    intCtrlWidth = Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxSkills, 0).Width
+                    intCtrlWidth = tableLayout.GetControlFromPosition(colIndexes.idxSkills, 0).Width
                     Dim cbSkills As optionComboPatternToken = New optionComboPatternToken
                     cbSkills.Name = "optCbPatternCivSkills" & civName
                     formatCivTableControl(cbSkills, intCtrlWidth, civControlHeight)
                     buildSkillOption(cbSkills, civLabel.simpleCivName)
-                    Me.tableLayoutCivs.Controls.Add(cbSkills, colIndexes.idxSkills, idxRow)
+                    tableLayout.Controls.Add(cbSkills, colIndexes.idxSkills, idxRow)
 
                     'add a seasonal option
-                    intCtrlWidth = Me.tableLayoutCivs.GetControlFromPosition(colIndexes.idxSeason, 0).Width
+                    intCtrlWidth = tableLayout.GetControlFromPosition(colIndexes.idxSeason, 0).Width
                     Dim cbSeasons As New optionComboCheckbox
                     cbSeasons.Name = "optCbSeasons" & civName
                     formatCivTableControl(cbSeasons, intCtrlWidth, civControlHeight)
                     buildSeasonOption(cbSeasons, civLabel.simpleCivName)
-                    Me.tableLayoutCivs.Controls.Add(cbSeasons, colIndexes.idxSeason, idxRow)
+                    tableLayout.Controls.Add(cbSeasons, colIndexes.idxSeason, idxRow)
                 End If
             End If
 
         Next
-        Me.tableLayoutCivs.ResumeLayout()
-        'Me.tableLayoutCivs.AutoScroll = True 'need this if we add any more civs to the table
+        tableLayout.ResumeLayout()
+        'tableLayout.AutoScroll = True 'need this if we add any more civs to the table
     End Sub
 
     Private Sub civActiveCheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
-        Dim civActive As optionSingleReplaceButton = TryCast(sender, optionSingleReplaceButton)
+        Dim civActive As optionSingleReplaceButton = TryCast(sender, optionSingleReplaceButton)        
         If civActive IsNot Nothing Then
-            Dim pos As TableLayoutPanelCellPosition = Me.tableLayoutCivs.GetPositionFromControl(CType(sender, Control))
-            'get the civLabel
-            Dim civLabel As mwCivLabel = TryCast(Me.tableLayoutCivs.GetControlFromPosition(0, pos.Row), mwCivLabel)
-            If civLabel IsNot Nothing Then
-                For colIdx As Integer = colIndexes.idxActive + 1 To Me.tableLayoutCivs.ColumnCount - 1
-                    If colIdx = colIndexes.idxPlaybleFort AndAlso civLabel.playableFortMode = False Then Continue For
-                    If colIdx = colIndexes.idxPlayableAdv AndAlso civLabel.playableAdvMode = False Then Continue For
-                    If colIdx = colIndexes.idxFaction AndAlso civLabel.factionable = False Then Continue For 'can't toggle faction
+            Dim tableLayout As mwTableLayout = TryCast(civActive.Parent, mwTableLayout)
+            If tableLayout IsNot Nothing Then
+                Dim pos As TableLayoutPanelCellPosition = tableLayout.GetPositionFromControl(CType(sender, Control))
+                'get the civLabel
+                Dim civLabel As mwCivLabel = TryCast(tableLayout.GetControlFromPosition(0, pos.Row), mwCivLabel)
+                If civLabel IsNot Nothing Then
+                    For colIdx As Integer = colIndexes.idxActive + 1 To tableLayout.ColumnCount - 1
+                        If colIdx = colIndexes.idxPlaybleFort AndAlso civLabel.playableFortMode = False Then Continue For
+                        If colIdx = colIndexes.idxPlayableAdv AndAlso civLabel.playableAdvMode = False Then Continue For
+                        If colIdx = colIndexes.idxFaction AndAlso civLabel.factionable = False Then Continue For 'can't toggle faction
 
-                    Dim colCon As Control = Me.tableLayoutCivs.GetControlFromPosition(colIdx, pos.Row)
-                    If colCon IsNot Nothing Then colCon.Enabled = civActive.Checked
-                Next
+                        Dim colCon As Control = tableLayout.GetControlFromPosition(colIdx, pos.Row)
+                        If colCon IsNot Nothing Then colCon.Enabled = civActive.Checked
+                    Next
+                End If
             End If
         End If
     End Sub
@@ -1023,10 +1019,13 @@ Imports Newtonsoft.Json
     'additionally disable the fort/adv mode controls from saving/loading if the corresponding tags are missing from the file completely
     Private Sub civActiveLoaded(ByVal btn As optionSingleReplaceButton)
         If btn IsNot Nothing Then
-            Dim pos As TableLayoutPanelCellPosition = Me.tableLayoutCivs.GetPositionFromControl(CType(btn, Control))
+            Dim tableLayout As mwTableLayout = TryCast(btn.Parent, mwTableLayout)
+            If tableLayout Is Nothing Then Exit Sub
+
+            Dim pos As TableLayoutPanelCellPosition = tableLayout.GetPositionFromControl(CType(btn, Control))
 
             'get the civLabel
-            Dim civLabel As mwCivLabel = TryCast(Me.tableLayoutCivs.GetControlFromPosition(0, pos.Row), mwCivLabel)
+            Dim civLabel As mwCivLabel = TryCast(tableLayout.GetControlFromPosition(0, pos.Row), mwCivLabel)
             Dim blnDisableAll As Boolean = False
             If civLabel IsNot Nothing Then
                 Dim entityFile As IO.FileInfo
@@ -1044,9 +1043,9 @@ Imports Newtonsoft.Json
                 If blnDisableAll Then civLabel.playableAdvMode = False : civLabel.playableFortMode = False
             End If
 
-            For colIdx As Integer = colIndexes.idxActive + 1 To Me.tableLayoutCivs.ColumnCount - 1
+            For colIdx As Integer = colIndexes.idxActive + 1 To tableLayout.ColumnCount - 1
                 If colIdx <> colIndexes.idxSkills Then 'any options that are NOT using the entity file(s) should be excluded
-                    Dim c As Control = TryCast(Me.tableLayoutCivs.GetControlFromPosition(colIdx, pos.Row), Control)
+                    Dim c As Control = TryCast(tableLayout.GetControlFromPosition(colIdx, pos.Row), Control)
                     If c IsNot Nothing Then
                         Dim cEnabled As iEnabled = TryCast(c, iEnabled)
                         If cEnabled IsNot Nothing Then
@@ -1120,9 +1119,9 @@ Imports Newtonsoft.Json
         c.Anchor = AnchorStyles.Top
     End Sub
 
-    Private Sub buildSimpleCivButton(ByVal btnName As String, ByVal civName As String, ByVal tag As String, ByVal idxCol As Integer, ByVal idxRow As Integer)
+    Private Sub buildSimpleCivButton(ByRef tableLayout As mwTableLayout, ByVal btnName As String, ByVal civName As String, ByVal tag As String, ByVal idxCol As Integer, ByVal idxRow As Integer)
         'add active option
-        Dim ctrlWidth As Integer = Me.tableLayoutCivs.GetControlFromPosition(idxCol, 0).Width
+        Dim ctrlWidth As Integer = tableLayout.GetControlFromPosition(idxCol, 0).Width
         Dim btn As New optionSingleReplaceButton
         btn.Name = "optBtn" & btnName & "Civ" & civName
 
@@ -1137,7 +1136,7 @@ Imports Newtonsoft.Json
         btn.Text = ""
 
         formatCivTableControl(btn, ctrlWidth, civControlHeight)
-        Me.tableLayoutCivs.Controls.Add(btn, idxCol, idxRow)
+        tableLayout.Controls.Add(btn, idxCol, idxRow)
     End Sub
 
     Private Sub buildSkillOption(ByRef cb As optionComboPatternToken, ByVal civName As String)
@@ -1195,57 +1194,34 @@ Imports Newtonsoft.Json
 
 #End Region
 
-#Region "item graphics option (text will be text plugin)"
+#Region "text will be text plugin"
 
-    Private Sub twbtCheck()
-        Dim strPath As String = IO.Path.Combine(globals.m_dwarfFortressRootDir, "hack", "plugins", "twbt.plug.dll")
-        mwCbItemGraphics.Checked = IO.File.Exists(strPath)
-        AddHandler mwCbItemGraphics.CheckedChanged, AddressOf mwCbItemGraphics_CheckedChanged
-        toggleRelatedGraphicOptions()
-    End Sub
-
-    Private Sub toggleRelatedGraphicOptions()
-        Dim blnEnable = (Not mwCbItemGraphics.Checked)
-        optCbPrintMode.Enabled = blnEnable : optBtnTruetype.Enabled = blnEnable
-        If Not blnEnable Then
-            setSettingsMessage("Disable item graphics to change truetype or printmode settings.")
-        Else
-            setSettingsMessage("")
-        End If
-    End Sub
-
-    Private Sub mwCbItemGraphics_CheckedChanged(sender As Object, e As EventArgs)
-        Try
-            RemoveHandler mwCbItemGraphics.CheckedChanged, AddressOf mwCbItemGraphics_CheckedChanged
-            'if trying to enable, check incompatible options and prompt the player
-            If mwCbItemGraphics.Checked AndAlso (optCbPrintMode.SelectedValue <> "STANDARD" Or optBtnTruetype.Checked) Then
-                If MsgBox("Print mode will be changed to STANDARD and truetype fonts will be disabled due to incompatibility!" & vbNewLine & vbNewLine & "Continue?", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.No Then
-                    mwCbItemGraphics.Checked = False 'reset to disabled
-                Else
-                    optCbPrintMode.loadOption("STANDARD")
-                    optBtnTruetype.loadOption(False)
-                End If
-            End If
-            Dim twbtPlugin As IO.FileInfo
-            Dim newName As String = ""
-            Dim strPath As String = IO.Path.Combine(globals.m_dwarfFortressRootDir, "hack", "plugins", "twbt.plug")
-            If mwCbItemGraphics.Checked Then
-                twbtPlugin = New IO.FileInfo(strPath & ".disabled")
-                newName = "twbt.plug.dll"
+    Private Sub optCbPrintMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles optCbPrintMode.SelectedIndexChanged
+        Try            
+            Dim dfhackPluginsPath As String = IO.Path.Combine(globals.m_dwarfFortressRootDir, "hack", "plugins")
+            Dim replacePath As String = ""
+            Dim twbtEnabled As Boolean = (optCbPrintMode.currentValue.ToString.ToUpper = "TWBT")
+            If twbtEnabled Then
+                replacePath = IO.Path.Combine(dfhackPluginsPath, "twbt")
+                grpTWBT.Visible = True
             Else
-                twbtPlugin = New IO.FileInfo(strPath & ".dll")
-                newName = "twbt.plug.disabled"
+                replacePath = IO.Path.Combine(dfhackPluginsPath, "original")
+                grpTWBT.Visible = False
             End If
-            If twbtPlugin IsNot Nothing AndAlso twbtPlugin.Exists Then
-                My.Computer.FileSystem.RenameFile(twbtPlugin.FullName, newName)
+            If IO.Directory.Exists(replacePath) Then
+                For Each fi As IO.FileInfo In fileWorking.getFiles(replacePath, False, New String() {".dll"})
+                    If fi IsNot Nothing AndAlso fi.Exists Then
+                        My.Computer.FileSystem.CopyFile(fi.FullName, IO.Path.Combine(dfhackPluginsPath, fi.Name), True)
+                    End If
+                Next
+            Else
+                MsgBox("Path to plugin files could not be found!" & vbNewLine & vbNewLine & "Path:" & replacePath, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Path not found")
             End If
         Catch ex As Exception
-            MsgBox("Failed to toggle the 'Text Will Be Text' plugin!" & vbCrLf & vbCrLf & "Error: " & ex.ToString, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Failed")
-        Finally
-            AddHandler mwCbItemGraphics.CheckedChanged, AddressOf mwCbItemGraphics_CheckedChanged
-            toggleRelatedGraphicOptions()
+
         End Try
     End Sub
+
 #End Region
 
 
@@ -1294,16 +1270,9 @@ Imports Newtonsoft.Json
 #End Region
 
 
-    Public Sub setSettingsMessage(ByVal msg As String)
-        If msg = "" Then
-            lblSettingsMessage.Visible = False
-            lblSettingsMessage.Text = ""
-        Else
-            lblSettingsMessage.Visible = True
-            lblSettingsMessage.Text = msg
-            lblSettingsMessage.BackColor = Theme.ColorTable.PanelDarkBorder 'override and give it a border/background
-        End If
-    End Sub
 
+    Private Sub optCbPrintMode_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles optCbPrintMode.SelectionChangeCommitted
+
+    End Sub
 End Class
 
